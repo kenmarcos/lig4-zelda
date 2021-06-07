@@ -43,6 +43,7 @@ table {
 }
 /* <<<< FIM DO RESET >>>> */
 
+<<<<<<< style.css
 /* <<<< INICIO VARIÁVEIS >>>> */
 :root {
 
@@ -81,8 +82,19 @@ p {
 /* <<<< FIM DA ESTILIZAÇAO DA PAGINA >>>> */
 
 /* <<<< ESTILIZAÇAO DO JOGO >>>> */
+.row{
+	width: 6vw;
+	height: 10vh;
+	display: flex;
+    flex-direction: column-reverse;
+    flex-wrap: wrap;
+}
 
-
+.column{
+	width: 6vw;
+	height: 10vh;
+	border: 1px solid black;
+}
 
 /* <<<< FIM DA ESTILIZAÇAO DO JOGO >>>> */
 
@@ -90,4 +102,8 @@ p {
 /* <<<< DESKTOP VERSION>>>> */
 @media only screen and (min-width:1024px) {
   
+<<<<<<< style.css
 }
+=======
+}
+>>>>>>> style.css
