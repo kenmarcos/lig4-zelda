@@ -96,6 +96,19 @@ p {
 	border: 1px solid black;
 }
 
+.disc1 {
+	width: 9vh;
+    height: 9vh;
+    background-color: red;
+    border-radius: 1rem;
+}
+
+.disc2 {
+	width: 9vh;
+    height: 9vh;
+    background-color: black;
+    border-radius: 1rem;
+}
 /* <<<< FIM DA ESTILIZAÇAO DO JOGO >>>> */
 
 
