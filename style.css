@@ -43,16 +43,42 @@ table {
 }
 /* <<<< FIM DO RESET >>>> */
 
+<<<<<<< style.css
+/* <<<< INICIO VARIÁVEIS >>>> */
+:root {
 
-/* <<<< INICIO DO ROOT >>>> */
+ --font-family-title:  sans-serif;
+ --font-family-subtitle: sans-serif;
+ --font-family-p: sans-serif;
 
+ --font-size-title: 3rem;
+ --font-size-subtitle: 2rem;
+ --font-size-p: 1rem;
 
-/* <<<< FIM DO ROOT >>>> */
+ --color-one: rgb(123, 122, 122);
+ --color-two: rgb(165, 165, 165);
+ --color-three: rgb(241, 241, 241);
+ --color-for: rgb(255, 255, 255);
+ --color-five: rgb(66, 66, 66);
+}
+/* <<<< FIM VARIÁVEIS >>>> */
 
 /* <<<< ESTILIZAÇAO DA PAGINA >>>> */
-
-
-
+body {
+  background-color: var(--color-three);
+}
+h1 {
+  font-size: var(--font-size-title);
+  color: var(--color-one)
+}
+h2 {
+  font-size: var(--font-size-subtitle);
+  color: var(--color-one);
+}
+p {
+  font-size: var(--font-size-p);
+  color: var(--color-five);
+}
 /* <<<< FIM DA ESTILIZAÇAO DA PAGINA >>>> */
 
 /* <<<< ESTILIZAÇAO DO JOGO >>>> */
@@ -76,4 +102,8 @@ table {
 /* <<<< DESKTOP VERSION>>>> */
 @media only screen and (min-width:1024px) {
   
+<<<<<<< style.css
 }
+=======
+}
+>>>>>>> style.css
