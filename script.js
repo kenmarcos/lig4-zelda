@@ -28,7 +28,7 @@ creatTable()
 
 const registerPosition = (id, player) =>{
   
-  for(let i = 6; i >= 0; i--)
+  for(let i = 5; i >= 0; i--)
   if(table[i][id] === "X"){
     table[i][id] = player 
     break;
