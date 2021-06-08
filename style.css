@@ -126,9 +126,15 @@ p {
 	background-color: var(--color-five);
 }
 
+.alert {
+	width: 500px;
+	height: 400px;
+	background-color: rgba(0, 128, 0, 0.384);
+	position: absolute;
+}
+
 /* <<<< FIM DA ESTILIZAÇAO DO JOGO >>>> */
 
 /* <<<< DESKTOP VERSION>>>> */
 
 @media only screen and (min-width:1024px) {}
-
