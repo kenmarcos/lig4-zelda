@@ -1,16 +1,4 @@
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -18,225 +6,129 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+
 body {
 	line-height: 1;
 }
+
 ol, ul {
 	list-style: none;
 }
+
 blockquote, q {
 	quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
+
+blockquote:before, blockquote:after, q:before, q:after {
 	content: '';
 	content: none;
 }
+
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
 /* <<<< FIM DO RESET >>>> */
 
-<<<<<<< style.css
 /* <<<< INICIO VARIÁVEIS >>>> */
+
 :root {
-
- --font-family-title:  sans-serif;
- --font-family-subtitle: sans-serif;
- --font-family-p: sans-serif;
-
- --font-size-title: 3rem;
- --font-size-subtitle: 2rem;
- --font-size-p: 1rem;
-
- --color-one: rgb(123, 122, 122);
- --color-two: rgb(165, 165, 165);
- --color-three: rgb(241, 241, 241);
- --color-for: rgb(255, 255, 255);
- --color-five: rgb(66, 66, 66);
+	--font-family-one: 'VT323', monospace;
+	--font-family-two: 'Press Start 2P', cursive;
+	--font-size-title: 3rem;
+	--font-size-subtitle: 2rem;
+	--font-size-p: 1rem;
+	--color-one: rgb(209, 192, 38);
+	--color-two: khaki;
+	--color-three: rgb(241, 241, 241);
+	--color-for: rgb(255, 255, 255);
+	--color-five: rgb(66, 66, 66);
 }
+
 /* <<<< FIM VARIÁVEIS >>>> */
 
 /* <<<< ESTILIZAÇAO DA PAGINA >>>> */
+
+#header div {
+	width: 100vw;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--color-two);
+}
+
+#header img {
+	width: 10rem;
+}
+
 body {
-  background-color: var(--color-three);
+	background-color: var(--color-three);
 }
+
 h1 {
-  font-size: var(--font-size-title);
-  color: var(--color-one)
+	font-family: var(--font-family-two);
+	font-size: var(--font-size-title);
+	color: var(--color-one);
 }
+
 h2 {
-  font-size: var(--font-size-subtitle);
-  color: var(--color-one);
+	font-size: var(--font-size-subtitle);
+	color: var(--color-one);
 }
+
 p {
-  font-size: var(--font-size-p);
-  color: var(--color-five);
+	font-size: var(--font-size-p);
+	color: var(--color-five);
 }
+
 /* <<<< FIM DA ESTILIZAÇAO DA PAGINA >>>> */
 
 /* <<<< ESTILIZAÇAO DO JOGO >>>> */
 
 #game {
 	display: flex;
+	justify-content: center;
 }
 
-.column{
-    width: 6vw;
-    height: 10vh;
-    flex-direction: column;
+.column {
+	width: 6vw;
+	height: 23rem;
+	border: 1px solid black;
 }
 
-.cell{
+.cell {
 	width: 6vw;
 	height: 10vh;
-	border: 1px solid black;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
-.disc1 {
+.disc1, .disc2 {
+	border-radius: 50%;
 	width: 4vw;
-    height: 4vw;
-    background-color: red;
-    border-radius: 50%;
-}
-
-.disc2 {
-	width: 4vw;
-    height: 4vw;
-    background-color: black;
-    border-radius: 50%;
-}
-/* <<<< FIM DA ESTILIZAÇAO DO JOGO >>>> */
-
-
-/* <<<< DESKTOP VERSION>>>> */
-@media only screen and (min-width:1024px) {
-  
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-} */
-/* HTML5 display-role reset for older browsers */
-/* article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-} */
-/* <<<< FIM DO RESET >>>> */
-
-
-/* <<<< INICIO DO ROOT >>>> */
-
-
-/* <<<< FIM DO ROOT >>>> */
-
-/* <<<< ESTILIZAÇAO DA PAGINA >>>> */
-
-
-
-/* <<<< FIM DA ESTILIZAÇAO DA PAGINA >>>> */
-
-/* <<<< ESTILIZAÇAO DO JOGO >>>> */
-/* .row{
-	width: 6vw;
-	height: 10vh;
-	display: flex;
-    flex-direction: column-reverse;
-    flex-wrap: wrap;
-}
-
-.column{
-	width: 6vw;
-	height: 10vh;
-	border: 1px solid black;
+	height: 4vw;
 }
 
 .disc1 {
-	width: 4vw;
-    height: 4vw;
-    background-color: red;
-    border-radius: 50%;
+	background-color: rgb(197, 0, 0);
 }
 
 .disc2 {
-	width: 4vw;
-    height: 4vw;
-    background-color: black;
-    border-radius: 50%;
-} */
+	background-color: var(--color-five);
+}
+
 /* <<<< FIM DA ESTILIZAÇAO DO JOGO >>>> */
 
-
 /* <<<< DESKTOP VERSION>>>> */
-/* @media only screen and (min-width:1024px) {
-  
-} */
+
+@media only screen and (min-width:1024px) {}
+
