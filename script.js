@@ -8,10 +8,11 @@ let table = [
 
 ];
 
+let game = document.querySelector("#game");
+
 //FUNCAO PARA CRIAR TABALE COM BASE NA ARRAY TABLE   
 const creatTable = () => {
   for (let i = 0; i < 7; i++) {
-    let game = document.querySelector("#game");
     let column = document.createElement("div");
     column.setAttribute('id', `${i}`)
     column.classList.add("column");
@@ -26,6 +27,80 @@ const creatTable = () => {
 };
 
 creatTable()
+
+// vitória horizontal
+const horizontalVictory = (arr) => {
+  const edgeX = arr[0].length - 3;
+
+  // iterar em cada linha
+  for(let i = 0; i < arr.length; i++){
+
+    // iterar em cada célula da linha em questão
+    for(let j = 0; j < edgeX; j++) {
+      let cell = arr[i][j];
+      
+      if(cell === 'V') {
+        // Checar se as próximas 3 células têm o mesmo valor V
+        if(cell === arr[i][j+1] && cell === arr[i][j+2] && cell === arr[i][j+3]) {
+          const alert = document.createElement('div')
+          alert.classList.add('alert')
+          const message = document.createElement('p')
+          message.innerText = 'Jogador 1 Venceu!'
+          alert.appendChild(message)
+          game.appendChild(alert)
+        }
+      } else if (cell === 'P') {
+        // Checar se as próximas 3 células têm o mesmo valor P
+        if(cell === arr[i][j+1] && cell === arr[i][j+2] && cell === arr[i][j+3]) {
+          const alert = document.createElement('div')
+          alert.classList.add('alert')
+          const message = document.createElement('p')
+          message.innerText = 'Jogador 2 Venceu!'
+          alert.appendChild(message)
+          game.appendChild(alert)
+        }
+      }
+    }
+  }
+}
+// vitória horizontal
+
+
+// vitória vertical
+const verticalVictroy = (arr) => {
+  const edgeY = arr.length - 3
+
+  for(let i = 0; i < edgeY; i++){
+
+    // iterar cada célula na linha
+    for(let j = 0; j < arr[0].length; j++) {
+      cell = arr[i][j];
+      
+      if(cell === 'V') {
+        // Checar se as próximas 3 células têm o mesmo valor
+        if(cell === arr[i+1][j] && cell === arr[i+2][j] && cell === arr[i+3][j]) {
+          const alert = document.createElement('div')
+          alert.classList.add('alert')
+          const message = document.createElement('p')
+          message.innerText = 'Jogador 1 Venceu!'
+          alert.appendChild(message)
+          game.appendChild(alert)
+        }
+      } else if (cell === 'P') {
+        // Checar se as próximas 3 células têm o mesmo valor
+        if(cell === arr[i+1][j] && cell === arr[i+2][j] && cell === arr[i+3][j]) {
+          const alert = document.createElement('div')
+          alert.classList.add('alert')
+          const message = document.createElement('p')
+          message.innerText = 'Jogador 2 Venceu!'
+          alert.appendChild(message)
+          game.appendChild(alert)
+        }
+      }
+    }
+  }
+}
+// vitória vertical
 
 const registerPosition = (id, player) => {
 
@@ -70,10 +145,12 @@ const changeTurn = (evt) => {
     registerPosition(Number(selectedColumn.id), "P");
 
   }
+
+  horizontalVictory(table)
+  verticalVictroy(table)
 }
 
 
 for (let i = 0; columns.length; i++) {
   columns[i].addEventListener('click', changeTurn)
-
 }
