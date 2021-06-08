@@ -16,7 +16,7 @@ const creatTable = () => {
     column.setAttribute('id', `${i}`)
     column.classList.add("column");
     game.append(column);
-    for (let j = 0; j < table[i].length; j++) {
+    for (let j = 1; j < table[i].length; j++) {
       let cell = document.createElement("div");
       cell.classList.add("cell");
       column.append(cell);
