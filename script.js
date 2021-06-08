@@ -1,38 +1,39 @@
 let table = [
-  ["X","X","X","X","X","X","X"],
-  ["X","X","X","X","X","X","X"],
-  ["X","X","X","X","X","X","X"],
-  ["X","X","X","X","X","X","X"],
-  ["X","X","X","X","X","X","X"],
-  ["X","X","X","X","X","X","X"],
-  ["X","X","X","X","X","X","X"]
-  ];
+  ["X", "X", "X", "X", "X", "X", "X"],
+  ["X", "X", "X", "X", "X", "X", "X"],
+  ["X", "X", "X", "X", "X", "X", "X"],
+  ["X", "X", "X", "X", "X", "X", "X"],
+  ["X", "X", "X", "X", "X", "X", "X"],
+  ["X", "X", "X", "X", "X", "X", "X"],
+
+];
 
 //FUNCAO PARA CRIAR TABALE COM BASE NA ARRAY TABLE   
 const creatTable = () => {
-  for (let i = 0; i < table.length; i++) {
+  for (let i = 0; i < 7; i++) {
     let game = document.querySelector("#game");
     let column = document.createElement("div");
     column.setAttribute('id', `${i}`)
     column.classList.add("column");
     game.append(column);
-    for (let j = 1; j < table[i].length; j++) {
-      let cell = document.createElement("div");
-      cell.classList.add("cell");
-      column.append(cell);
+    for (let j = 0; j < table.length; j++) {  
+        let cell = document.createElement("div");
+        cell.classList.add("cell");
+        column.append(cell);
+      
     }
   }
 };
 
 creatTable()
 
-const registerPosition = (id, player) =>{
-  
-  for(let i = 5; i >= 0; i--)
-  if(table[i][id] === "X"){
-    table[i][id] = player 
-    break;
-  }
+const registerPosition = (id, player) => {
+
+  for (let i = 5; i >= 0; i--)
+    if (table[i][id] === "X") {
+      table[i][id] = player
+      break;
+    }
   console.log(table);
 }
 
@@ -51,7 +52,7 @@ const changeTurn = (evt) => {
       celula = selectedColumn.childNodes[i]
     }
   }
-    
+
   if (turn === 'turn1') { // turno do jogador 1
     // colocar o disco do jogador 1
     const disc1 = document.createElement('div')
@@ -71,6 +72,8 @@ const changeTurn = (evt) => {
   }
 }
 
+
 for (let i = 0; columns.length; i++) {
   columns[i].addEventListener('click', changeTurn)
+
 }
