@@ -1,11 +1,11 @@
 let table = [
-  "XXXXXX",
-  "XXXXXX",
-  "XXXXXX",
-  "XXXXXX",
-  "XXXXXX",
-  "XXXXXX",
-  "XXXXXX"
+  ["X","X","X","X","X","X","X"],
+  ["X","X","X","X","X","X","X"],
+  ["X","X","X","X","X","X","X"],
+  ["X","X","X","X","X","X","X"],
+  ["X","X","X","X","X","X","X"],
+  ["X","X","X","X","X","X","X"],
+  ["X","X","X","X","X","X","X"]
   ];
 
 //FUNCAO PARA CRIAR TABALE COM BASE NA ARRAY TABLE   
@@ -13,7 +13,7 @@ const creatTable = () => {
   for (let i = 0; i < table.length; i++) {
     let game = document.querySelector("#game");
     let column = document.createElement("div");
-    column.setAttribute('id', `coluna${i}`)
+    column.setAttribute('id', `${i}`)
     column.classList.add("column");
     game.append(column);
     for (let j = 0; j < table[i].length; j++) {
@@ -23,7 +23,18 @@ const creatTable = () => {
     }
   }
 };
+
 creatTable()
+
+const registerPosition = (id, player) =>{
+  
+  for(let i = 6; i >= 0; i--)
+  if(table[i][id] === "X"){
+    table[i][id] = player 
+    break;
+  }
+  console.log(table);
+}
 
 const columns = document.querySelectorAll('.column')
 let turn = 'turn1'
@@ -47,12 +58,16 @@ const changeTurn = (evt) => {
     disc1.classList.add('disc1')
     celula.appendChild(disc1)
     turn = 'turn2'
+    registerPosition(Number(selectedColumn.id), "V");
+
   } else { // turno do jogador 2
     // colocar o disco do jogador 2
     const disc2 = document.createElement('div')
     disc2.classList.add('disc2')
     celula.appendChild(disc2)
     turn = 'turn1'
+    registerPosition(Number(selectedColumn.id), "P");
+
   }
 }
 
