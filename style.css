@@ -135,6 +135,61 @@ p {
 	z-index: 1;
 }
 
+.form {
+	width: 20rem;
+	height:30rem;
+	background-color: rgba(163, 162, 162, 0.664);
+	position: absolute;
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+.div-input {
+	/* text-align: center; */
+	/* display: flex;
+	flex-direction: column; */
+}
+
+.img {
+	display: block;
+	margin: 0 auto 1rem;
+}
+
+.input {
+	display: block;
+	margin: 0 auto;
+	height: 2rem;
+    width: 15rem;
+	outline: 0;
+    border-radius: 0.5rem;
+    padding: 0.3rem 0.8rem;
+	font-size: 1.3rem;
+	font-weight: bold;
+}
+
+#player {
+    width: 22rem;
+    height: 3rem;
+    margin: 0 auto;
+}
+
+
+.player1, .player2 {
+	font-size: 2rem;
+	color: white;
+	padding: 0.5rem;
+}
+
+.player1 {
+	background-color: rgb(197, 0, 0);
+}
+
+.player2 {
+	background-color: var(--color-five);
+}
+
 /* <<<< FIM DA ESTILIZAÇAO DO JOGO >>>> */
 
 /* <<<< DESKTOP VERSION>>>> */
