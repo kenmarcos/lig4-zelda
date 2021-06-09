@@ -11,12 +11,13 @@ let table = [
 let game = document.querySelector("#game");
 
 //FUNCAO PARA CRIAR TABALE COM BASE NA ARRAY TABLE   
-const creatTable = () => {
+const createTable = () => {
   for (let i = 0; i < 7; i++) {
     let column = document.createElement("div");
-    column.setAttribute('id', `${i}`)
+    column.setAttribute('id', i)
     column.classList.add("column");
     game.append(column);
+    column.addEventListener('click', changeTurn)
     for (let j = 0; j < table.length; j++) {  
         let cell = document.createElement("div");
         cell.classList.add("cell");
@@ -24,9 +25,13 @@ const creatTable = () => {
       
     }
   }
-};
+}
+//funcao reiniciar table
+const restartTable = () =>{
+  let game = document.getElementById('game');
+  game.innerHTML = "";
+}
 
-creatTable()
 //chamada mensagem de vitoria
 const finalMsg = (player) => {
   const alert = document.createElement('div')
@@ -148,6 +153,7 @@ let turn = 'turn1'
 // FUNÇÃO DE MUDANÇA DE TURNO E COLOCAÇÃO DOS DISCOS
 const changeTurn = (evt) => {
   // selecionar a coluna
+  
   let selectedColumn = evt.currentTarget
 
   // selecionar última célula vazia da coluna
@@ -181,7 +187,10 @@ const changeTurn = (evt) => {
   draw(table)
 }
 
+const btnStart = document.getElementById("start");
+btnStart.addEventListener('click', restartTable);
+btnStart.addEventListener('click', createTable);
 
-for (let i = 0; columns.length; i++) {
-  columns[i].addEventListener('click', changeTurn)
-}
+const btnRestart = document.getElementById("restart");
+btnRestart.addEventListener('click', restartTable);
+btnRestart.addEventListener('click', createTable);
