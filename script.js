@@ -30,6 +30,11 @@ const createTable = () => {
 const restartTable = () =>{
   let game = document.getElementById('game');
   game.innerHTML = "";
+  for(let i = 0; i < table.length; i++){
+    for(let j = 0; j < table[i].length; j++){
+      table[i][j] = "X";
+    }
+  }
 }
 
 //chamada mensagem de vitoria
@@ -187,10 +192,47 @@ const changeTurn = (evt) => {
   draw(table)
 }
 
+function timer() {
+  let sec = 0;
+  let min = 0;
+  let hr = 0;
+  timerID = setInterval(function(){  
+    let timer = (hr < 10 ? '0' + hr : hr) + ':' + (min < 10 ? '0' + min : min) + ':' + (sec < 10 ? '0' + sec : sec);
+    document.getElementById("timer").innerHTML = timer;
+    if(sec === 59){
+      min++;
+      sec = 0;
+    }
+    if(min === 60){
+      hr++;
+      min = 0;
+    }
+    sec++ }, 1000);
+}
+
+const stopTimer = () => {
+  clearInterval(timerID);
+}
+
+const toStart = () =>{
+  restartTable();
+  createTable();
+  stopTimer();
+  timer();
+}
+
+const toRestar = () =>{
+  restartTable();
+  createTable();
+  stopTimer()
+  timer()
+}
+
 const btnStart = document.getElementById("start");
-btnStart.addEventListener('click', restartTable);
-btnStart.addEventListener('click', createTable);
+btnStart.addEventListener('click', toStart);
 
 const btnRestart = document.getElementById("restart");
-btnRestart.addEventListener('click', restartTable);
-btnRestart.addEventListener('click', createTable);
+btnRestart.addEventListener('click', toRestar);
+
+
+
