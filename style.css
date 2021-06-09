@@ -99,14 +99,15 @@ p {
 }
 
 .column {
+	display: flex;
+	flex-direction: column;
 	width: 6vw;
 	height: 20rem;
 	border: 1px solid black;
 }
 
 .cell {
-	width: 6vw;
-	height: 10vh;
+	height: 5rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -127,10 +128,11 @@ p {
 }
 
 .alert {
-	width: 500px;
-	height: 400px;
+	width: 50rem;
+	height:30rem;
 	background-color: rgba(0, 128, 0, 0.384);
 	position: absolute;
+	z-index: 1;
 }
 
 /* <<<< FIM DA ESTILIZAÇAO DO JOGO >>>> */
