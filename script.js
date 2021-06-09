@@ -39,16 +39,32 @@ const restartTable = () => {
 
 //chamada mensagem de vitoria
 const finalMsg = (player) => {
-    const alert = document.createElement('div')
-    alert.classList.add('alert')
-    const message = document.createElement('p')
-    if (player === undefined) {
-        message.innerText = `Empate`
-    } else {
-        message.innerText = `${player} venceu!`
+  
+    if (player === 'alertEmpate') {
+        const alert = document.createElement('div')
+        alert.classList.add(player)
+        const message = document.createElement('p')
+        message.innerText = 'Go to the next turn!'
+        alert.appendChild(message)
+        game.appendChild(alert)
+       
+    } else if (player === 'alertPlayer1') {
+        const alert = document.createElement('div')
+        alert.classList.add(player)
+        const message = document.createElement('p')
+        message.innerText = 'Congratulations, You save the princess Zelda!'
+        alert.appendChild(message)
+        game.appendChild(alert)
+       
+    } else if (player === 'alertPlayer2') {
+        const alert = document.createElement('div')
+        alert.classList.add(player)
+        const message = document.createElement('p')
+        message.innerText = 'Oh no!!! The vilain catch the princess...'
+        alert.appendChild(message)
+        game.appendChild(alert)
+     
     }
-    alert.appendChild(message)
-    game.appendChild(alert)
 }
 
 // vitória horizontal
@@ -65,14 +81,14 @@ const horizontalVictory = (arr) => {
             if (cell === 'V') {
                 // Checar se as próximas 3 células têm o mesmo valor V
                 if (cell === arr[i][j + 1] && cell === arr[i][j + 2] && cell === arr[i][j + 3]) {
-                    finalMsg("Jogador 1")
+                    finalMsg("alertPlayer1")
                     break
                 }
             } else if (cell === 'P') {
                 // Checar se as próximas 3 células têm o mesmo valor P
                 if (cell === arr[i][j + 1] && cell === arr[i][j + 2] && cell === arr[i][j + 3]) {
                     const alert = document.createElement('div')
-                    finalMsg("Jogador 2")
+                    finalMsg("alertPlayer2")
                     break
                 }
             }
@@ -93,12 +109,12 @@ const verticalVictroy = (arr) => {
             if (cell === 'V') {
                 // Checar se as próximas 3 células têm o mesmo valor
                 if (cell === arr[i + 1][j] && cell === arr[i + 2][j] && cell === arr[i + 3][j]) {
-                    finalMsg("Jogador 1")
+                    finalMsg("alertPlayer1")
                 }
             } else if (cell === 'P') {
                 // Checar se as próximas 3 células têm o mesmo valor
                 if (cell === arr[i + 1][j] && cell === arr[i + 2][j] && cell === arr[i + 3][j]) {
-                    finalMsg("Jogador 2")
+                    finalMsg("alertPlayer2")
                 }
             }
         }
@@ -111,9 +127,9 @@ const diagonalWin = (player) => {
         for (let j = 0; j < 4; j++) {
             if (player === table[i][j] && player === table[i + 1][j + 1] && player === table[i + 2][j + 2] && player === table[i + 3][j + 3]) {
                 if (player === "V") {
-                    finalMsg("Jogador 1")
+                    finalMsg("alertPlayer1")
                 } else {
-                    finalMsg("Jogador 2")
+                    finalMsg("alertPlayer2")
                 }
             }
         }
@@ -122,9 +138,9 @@ const diagonalWin = (player) => {
         for (let j = 0; j < 4; j++) {
             if (player === table[i][j] && player === table[i - 1][j + 1] && player === table[i - 2][j + 2] && player === table[i - 3][j + 3]) {
                 if (player === "V") {
-                    finalMsg("Jogador 1")
+                    finalMsg("alertPlayer1")
                 } else {
-                    finalMsg("Jogador 2")
+                    finalMsg("alertPlayer2")
                 }
             }
         }
@@ -140,7 +156,7 @@ const draw = (arr) => {
         }
     }
     if (cont === 7) {
-        finalMsg()
+        finalMsg('alertEmpate')
     }
 }
 
