@@ -24,6 +24,7 @@ const createTable = () => {
       column.append(cell);
     }
   }
+  player1Turn()
 }
 //funcao reiniciar table
 const restartTable = () =>{
