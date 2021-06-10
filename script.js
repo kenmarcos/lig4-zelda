@@ -9,9 +9,11 @@ let table = [
 ];
 
 let game = document.querySelector("#game");
-
+let timerContainer = document.getElementById('timerContainer')
 //FUNCAO PARA CRIAR TABALE COM BASE NA ARRAY TABLE   
 const createTable = () => {
+    document.getElementById('game').innerHTML = '';
+    document.getElementById('timerContainer').innerHTML = '';
         for (let i = 0; i < 7; i++) {
             let column = document.createElement("div");
             column.setAttribute('id', i)
@@ -25,6 +27,10 @@ const createTable = () => {
 
             }
         }
+        const timer = document.createElement('div')
+        timer.setAttribute('id','timer')
+        setTimeout(function() {
+        return timerContainer.appendChild(timer)}, 1000);
     }
     //funcao reiniciar table
 const restartTable = () => {
@@ -34,7 +40,31 @@ const restartTable = () => {
         for (let j = 0; j < table[i].length; j++) {
             table[i][j] = "X";
         }
-    }
+    }    
+}
+let timerID
+function timer() {
+    let sec = 0;
+    let min = 0;
+    let hr = 0;
+    timerID = setInterval(function() {
+        let timer = (hr < 10 ? '0' + hr : hr) + ':' + (min < 10 ? '0' + min : min) + ':' + (sec < 10 ? '0' + sec : sec);
+        document.getElementById("timer").innerHTML = timer;
+       
+        if (sec === 59) {
+            min++;
+            sec = 0;
+        }
+        if (min === 60) {
+            hr++;
+            min = 0;
+        }
+        sec++
+    }, 1000);
+}
+
+const stopTimer = () => {
+    clearInterval(timerID);
 }
 
 //chamada mensagem de vitoria
@@ -82,6 +112,7 @@ const horizontalVictory = (arr) => {
                 // Checar se as próximas 3 células têm o mesmo valor V
                 if (cell === arr[i][j + 1] && cell === arr[i][j + 2] && cell === arr[i][j + 3]) {
                     finalMsg("alertPlayer1")
+                    stopTimer();
                     break
                 }
             } else if (cell === 'P') {
@@ -89,6 +120,7 @@ const horizontalVictory = (arr) => {
                 if (cell === arr[i][j + 1] && cell === arr[i][j + 2] && cell === arr[i][j + 3]) {
                     const alert = document.createElement('div')
                     finalMsg("alertPlayer2")
+                    stopTimer();
                     break
                 }
             }
@@ -110,11 +142,13 @@ const verticalVictroy = (arr) => {
                 // Checar se as próximas 3 células têm o mesmo valor
                 if (cell === arr[i + 1][j] && cell === arr[i + 2][j] && cell === arr[i + 3][j]) {
                     finalMsg("alertPlayer1")
+                    stopTimer();
                 }
             } else if (cell === 'P') {
                 // Checar se as próximas 3 células têm o mesmo valor
                 if (cell === arr[i + 1][j] && cell === arr[i + 2][j] && cell === arr[i + 3][j]) {
                     finalMsg("alertPlayer2")
+                    stopTimer();
                 }
             }
         }
@@ -128,8 +162,10 @@ const diagonalWin = (player) => {
             if (player === table[i][j] && player === table[i + 1][j + 1] && player === table[i + 2][j + 2] && player === table[i + 3][j + 3]) {
                 if (player === "V") {
                     finalMsg("alertPlayer1")
+                    stopTimer();
                 } else {
                     finalMsg("alertPlayer2")
+                    stopTimer();
                 }
             }
         }
@@ -139,8 +175,10 @@ const diagonalWin = (player) => {
             if (player === table[i][j] && player === table[i - 1][j + 1] && player === table[i - 2][j + 2] && player === table[i - 3][j + 3]) {
                 if (player === "V") {
                     finalMsg("alertPlayer1")
+                    stopTimer();
                 } else {
                     finalMsg("alertPlayer2")
+                    stopTimer();
                 }
             }
         }
@@ -157,6 +195,7 @@ const draw = (arr) => {
     }
     if (cont === 7) {
         finalMsg('alertEmpate')
+        stopTimer();
     }
 }
 
@@ -210,30 +249,8 @@ const changeTurn = (evt) => {
     draw(table)
 }
 
-function timer() {
-    let sec = 0;
-    let min = 0;
-    let hr = 0;
-    timerID = setInterval(function() {
-        let timer = (hr < 10 ? '0' + hr : hr) + ':' + (min < 10 ? '0' + min : min) + ':' + (sec < 10 ? '0' + sec : sec);
-        document.getElementById("timer").innerHTML = timer;
-        if (sec === 59) {
-            min++;
-            sec = 0;
-        }
-        if (min === 60) {
-            hr++;
-            min = 0;
-        }
-        sec++
-    }, 1000);
-}
-
-const stopTimer = () => {
-    clearInterval(timerID);
-}
-
 const toStart = () => {
+    turn = 'turn1' 
     restartTable();
     createTable();
     stopTimer();
@@ -241,6 +258,7 @@ const toStart = () => {
 }
 
 const toRestar = () => {
+    turn = 'turn1' 
     restartTable();
     createTable();
     stopTimer()
