@@ -12,21 +12,21 @@ let game = document.querySelector("#game");
 
 //FUNCAO PARA CRIAR TABALE COM BASE NA ARRAY TABLE   
 const createTable = () => {
-        for (let i = 0; i < 7; i++) {
-            let column = document.createElement("div");
-            column.setAttribute('id', i)
-            column.classList.add("column");
-            game.append(column);
-            column.addEventListener('click', changeTurn)
-            for (let j = 0; j < table.length; j++) {
-                let cell = document.createElement("div");
-                cell.classList.add("cell");
-                column.append(cell);
-
-            }
-        }
+  for (let i = 0; i < 7; i++) {
+    let column = document.createElement("div");
+    column.setAttribute('id', i)
+    column.classList.add("column");
+    game.append(column);
+    column.addEventListener('click', changeTurn)
+    for (let j = 0; j < table.length; j++) {  
+      let cell = document.createElement("div");
+      cell.classList.add("cell");
+      column.append(cell);
     }
-    //funcao reiniciar table
+  }
+  player1Turn()
+}
+//funcao reiniciar table
 const restartTable = () => {
     let game = document.getElementById('game');
     game.innerHTML = "";
@@ -195,6 +195,7 @@ const changeTurn = (evt) => {
         turn = 'turn2'
         registerPosition(Number(selectedColumn.id), "V");
         diagonalWin("V")
+        player2Turn()
     } else { // turno do jogador 2
         // colocar o disco do jogador 2
         const disc2 = document.createElement('div')
@@ -203,6 +204,7 @@ const changeTurn = (evt) => {
         turn = 'turn1'
         registerPosition(Number(selectedColumn.id), "P");
         diagonalWin("P")
+        player1Turn()
     }
 
     horizontalVictory(table)
@@ -252,3 +254,71 @@ btnStart.addEventListener('click', toStart);
 
 const btnRestart = document.getElementById("restart");
 btnRestart.addEventListener('click', toRestar);
+
+const getNames = () => {
+  const form = document.createElement('form')
+  form.classList.add('form')
+  game.append(form)
+
+  const divInput1 = document.createElement('div')
+  divInput1.classList.add('div-input')
+  form.appendChild(divInput1)
+  const imgPlayer1 = document.createElement('img')
+  imgPlayer1.src = './img/link.png'
+  imgPlayer1.classList.add('img')
+  divInput1.appendChild(imgPlayer1)
+  const inputPlayer1 = document.createElement('input')
+  inputPlayer1.setAttribute('type', 'text')
+  inputPlayer1.setAttribute('placeholder', 'Player 1')
+  inputPlayer1.classList.add('input')
+  divInput1.appendChild(inputPlayer1)
+
+  const divInput2 = document.createElement('div')
+  divInput2.classList.add('div-input')
+  form.appendChild(divInput2)
+  const imgPlayer2 = document.createElement('img')
+  imgPlayer2.src = './img/vilain.png'
+  imgPlayer2.classList.add('img')
+  divInput2.appendChild(imgPlayer2)
+  const inputPlayer2 = document.createElement('input')
+  inputPlayer2.setAttribute('type', 'text')
+  inputPlayer2.setAttribute('placeholder', 'Player 2')
+  inputPlayer2.classList.add('input')
+  divInput2.appendChild(inputPlayer2)
+}
+getNames()
+
+const divPlayer = document.getElementById('player')
+
+const player1Turn = () => {
+  divPlayer.innerHTML = " "
+  divPlayer.classList.remove('div-player2')
+  divPlayer.classList.add('div-player1')
+
+  const player1 = document.createElement('p')
+  player1.innerText = 'Jogador 1'
+  player1.classList.add('player1')
+  divPlayer.appendChild(player1)
+
+  const imgPlayer1 = document.createElement('img')
+  imgPlayer1.src = './img/link.png'
+  imgPlayer1.classList.add('img-div')
+  divPlayer.appendChild(imgPlayer1)
+}
+
+const player2Turn = () => {
+  divPlayer.innerHTML = " "
+  divPlayer.classList.remove('div-player1')
+  divPlayer.classList.add('div-player2')
+
+  const player2 = document.createElement('p')
+  player2.innerText = 'Jogador 2'
+  player2.classList.add('player2')
+  divPlayer.appendChild(player2)
+
+  const imgPlayer2 = document.createElement('img')
+  imgPlayer2.src = './img/vilain.png'
+  imgPlayer2.classList.add('img-div')
+  divPlayer.appendChild(imgPlayer2)
+
+}
