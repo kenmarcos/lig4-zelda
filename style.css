@@ -284,14 +284,14 @@ button:hover {
 
 .form {
     width: 18rem;
-    height: 25rem;
+    height: 20rem;
     background-color: var(--color-five);
     position: absolute;
-    top: 16rem;
+    top: 18.3rem;
     z-index: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
 }
 
 .div-input {
@@ -300,8 +300,15 @@ button:hover {
 
 .img {
 	display: block;
-	margin: 1rem auto;
-    width: 8rem;
+	margin: 0 auto;
+    width: 6rem;
+}
+
+.versus {
+    font-size: 2rem;
+    color: var(--color-three);
+    text-align: center;
+    margin: 0.8rem;
 }
 
 .input {
@@ -326,7 +333,7 @@ button:hover {
 }
 
 
-.player1, .player2 {
+.p-player1, .p-player2 {
     font-size: 2rem;
     color: white;
 }
