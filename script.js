@@ -246,7 +246,7 @@ const changeTurn = (evt) => {
         diagonalWin("P")
         player1Turn()
     } 
-
+    playCounter();
     horizontalVictory(table)
     verticalVictroy(table)
     draw(table)
@@ -341,3 +341,29 @@ const player2Turn = () => {
   divPlayer.appendChild(imgPlayer2)
 
 }
+
+const playCounter = () => {
+    let player2count = 0;
+    let player1count = 0;
+    for(let i = 0; i < table.length; i++){
+        for(let j = 0; j < table[0].length; j++){
+            if(table[i][j] === "V"){
+                player1count++
+            }else if(table[i][j] === "P"){
+                player2count++
+            }
+        }
+    }
+    let containerP1 = document.querySelector('#player1count');
+    let containerP2 = document.querySelector('#player2count');
+    let countPlayer1 = document.createElement('div');
+    countPlayer1.classList.add('playCount');
+    containerP1.innerHTML = ""
+    countPlayer1.innerHTML = "Jogador 1: " + player1count;
+    let countPlayer2 = document.createElement('div');
+    countPlayer2.classList.add('playCount');
+    containerP2.innerHTML = ""
+    countPlayer2.innerHTML = "Jogador 2:" + player2count;
+    containerP1.append(countPlayer1)
+    containerP2.append(countPlayer2)
+};
