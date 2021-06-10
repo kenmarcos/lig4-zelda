@@ -245,7 +245,7 @@ const changeTurn = (evt) => {
         registerPosition(Number(selectedColumn.id), "P");
         diagonalWin("P")
         player1Turn()
-    }
+    } 
 
     horizontalVictory(table)
     verticalVictroy(table)
