@@ -438,11 +438,11 @@ const playCounter = () => {
     let countPlayer1 = document.createElement('div');
     countPlayer1.classList.add('playCount');
     containerP1.innerHTML = ""
-    countPlayer1.innerHTML = player1 + " : " + player1count;
+    countPlayer1.innerHTML = player1 + " " + player1count;
     let countPlayer2 = document.createElement('div');
     countPlayer2.classList.add('playCount');
     containerP2.innerHTML = ""
-    countPlayer2.innerHTML = player2 + " : " + player2count;
+    countPlayer2.innerHTML = player2 + " " + player2count;
     containerP1.append(countPlayer1)
     containerP2.append(countPlayer2)
 };
