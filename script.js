@@ -8,6 +8,8 @@ let table = [
 
 ];
 
+let player1 = 'Player 1'
+let player2 = 'Player 2'
 let game = document.querySelector("#game");
 let timerContainer = document.getElementById('timerContainer')
 //FUNCAO PARA CRIAR TABALE COM BASE NA ARRAY TABLE   
@@ -31,6 +33,8 @@ const createTable = () => {
         timer.setAttribute('id','timer')
         setTimeout(function() {
         return timerContainer.appendChild(timer)}, 1000);
+        player1Turn()
+
     }
 
 //funcao reiniciar table
@@ -252,11 +256,40 @@ const changeTurn = (evt) => {
     draw(table)
 }
 
+function timer() {
+    let sec = 0;
+    let min = 0;
+    let hr = 0;
+    timerID = setInterval(function() {
+        let timer = (hr < 10 ? '0' + hr : hr) + ':' + (min < 10 ? '0' + min : min) + ':' + (sec < 10 ? '0' + sec : sec);
+        document.getElementById("timer").innerHTML = timer;
+        if (sec === 59) {
+            min++;
+            sec = 0;
+        }
+        if (min === 60) {
+            hr++;
+            min = 0;
+        }
+        sec++
+    }, 1000);
+}
+
+// const stopTimer = () => {
+//     clearInterval(timerID);
+// }
+
+
 const toStart = () => {
+    let inputsNames = document.querySelectorAll('.input')
+    if (inputsNames[0].value !== "" || inputsNames[1].value !== "") {
+        player1 = inputsNames[0].value
+        player2 = inputsNames[1].value
+    }
     turn = 'turn1' 
     restartTable();
     createTable();
-    stopTimer();
+    stopTimer()    
     timer();
 }
 
@@ -292,6 +325,11 @@ const getNames = () => {
   inputPlayer1.classList.add('input')
   divInput1.appendChild(inputPlayer1)
 
+  const versus = document.createElement('p')
+  versus.classList.add('versus')
+  versus.innerText = 'VS'
+  form.appendChild(versus)
+
   const divInput2 = document.createElement('div')
   divInput2.classList.add('div-input')
   form.appendChild(divInput2)
@@ -314,10 +352,10 @@ const player1Turn = () => {
   divPlayer.classList.remove('div-player2')
   divPlayer.classList.add('div-player1')
 
-  const player1 = document.createElement('p')
-  player1.innerText = 'Jogador 1'
-  player1.classList.add('player1')
-  divPlayer.appendChild(player1)
+  const pPlayer1 = document.createElement('p')
+  pPlayer1.innerText = player1
+  pPlayer1.classList.add('p-player1')
+  divPlayer.appendChild(pPlayer1)
 
   const imgPlayer1 = document.createElement('img')
   imgPlayer1.src = './img/link.png'
@@ -330,14 +368,13 @@ const player2Turn = () => {
   divPlayer.classList.remove('div-player1')
   divPlayer.classList.add('div-player2')
 
-  const player2 = document.createElement('p')
-  player2.innerText = 'Jogador 2'
-  player2.classList.add('player2')
-  divPlayer.appendChild(player2)
+  const pPlayer2 = document.createElement('p')
+  pPlayer2.innerText = player2
+  pPlayer2.classList.add('p-player2')
+  divPlayer.appendChild(pPlayer2)
 
   const imgPlayer2 = document.createElement('img')
   imgPlayer2.src = './img/vilain.png'
   imgPlayer2.classList.add('img-div')
   divPlayer.appendChild(imgPlayer2)
-
 }
