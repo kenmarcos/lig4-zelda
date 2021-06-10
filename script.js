@@ -81,6 +81,9 @@ const finalMsg = (player) => {
         const message = document.createElement('p')
         message.innerText = 'Go to the next turn!'
         alert.appendChild(message)
+        const image = document.createElement('div')
+        image.setAttribute('clas', `${player}-img`)
+        alert.appendChild(image)
         game.appendChild(alert)
        
     } else if (player === 'alertPlayer1') {
@@ -89,6 +92,9 @@ const finalMsg = (player) => {
         const message = document.createElement('p')
         message.innerText = 'Congratulations, You save the princess Zelda!'
         alert.appendChild(message)
+        const image = document.createElement('div')
+        image.setAttribute('clas', `${player}-img`)
+        alert.appendChild(image)
         game.appendChild(alert)
        
     } else if (player === 'alertPlayer2') {
@@ -97,6 +103,9 @@ const finalMsg = (player) => {
         const message = document.createElement('p')
         message.innerText = 'Oh no!!! The vilain catch the princess...'
         alert.appendChild(message)
+        const image = document.createElement('div')
+        image.setAttribute('clas', `${player}-img`)
+        alert.appendChild(image)
         game.appendChild(alert)
      
     }
@@ -317,7 +326,7 @@ const getNames = () => {
   form.appendChild(divInput1)
   const imgPlayer1 = document.createElement('img')
   imgPlayer1.src = './img/link.png'
-  imgPlayer1.classList.add('img')
+  imgPlayer1.classList.add('img1')
   divInput1.appendChild(imgPlayer1)
   const inputPlayer1 = document.createElement('input')
   inputPlayer1.setAttribute('type', 'text')
@@ -335,7 +344,7 @@ const getNames = () => {
   form.appendChild(divInput2)
   const imgPlayer2 = document.createElement('img')
   imgPlayer2.src = './img/vilain.png'
-  imgPlayer2.classList.add('img')
+  imgPlayer2.classList.add('img2')
   divInput2.appendChild(imgPlayer2)
   const inputPlayer2 = document.createElement('input')
   inputPlayer2.setAttribute('type', 'text')
