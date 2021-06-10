@@ -93,7 +93,7 @@ const finalMsg = (player) => {
         message.innerText = 'Go to the next turn!'
         alert.appendChild(message)
         const image = document.createElement('div')
-        image.setAttribute('clas', `${player}-img`)
+        image.setAttribute('class', `${player}-img`)
         alert.appendChild(image)
         game.appendChild(alert)
        
@@ -104,7 +104,7 @@ const finalMsg = (player) => {
         message.innerText = 'Congratulations, You save the princess Zelda!'
         alert.appendChild(message)
         const image = document.createElement('div')
-        image.setAttribute('clas', `${player}-img`)
+        image.setAttribute('class', `${player}-img`)
         alert.appendChild(image)
         game.appendChild(alert)
        
@@ -115,7 +115,7 @@ const finalMsg = (player) => {
         message.innerText = 'Oh no!!! The vilain catch the princess...'
         alert.appendChild(message)
         const image = document.createElement('div')
-        image.setAttribute('clas', `${player}-img`)
+        image.setAttribute('class', `${player}-img`)
         alert.appendChild(image)
         game.appendChild(alert)
      
@@ -286,6 +286,10 @@ const changeTurn = (evt) => {
             player1Turn()
         }
     } 
+    playCounter();
+    horizontalVictory(table)
+    verticalVictroy(table)
+    draw(table)
 }
 
 function timer() {
@@ -414,8 +418,31 @@ const player2Turn = () => {
   imgPlayer2.src = './img/vilain.png'
   imgPlayer2.classList.add('img-div')
   divPlayer.appendChild(imgPlayer2)
-}
-
-const showTimer = () => {
 
 }
+
+const playCounter = () => {
+    let player2count = 0;
+    let player1count = 0;
+    for(let i = 0; i < table.length; i++){
+        for(let j = 0; j < table[0].length; j++){
+            if(table[i][j] === "V"){
+                player1count++
+            }else if(table[i][j] === "P"){
+                player2count++
+            }
+        }
+    }
+    let containerP1 = document.querySelector('#player1count');
+    let containerP2 = document.querySelector('#player2count');
+    let countPlayer1 = document.createElement('div');
+    countPlayer1.classList.add('playCount');
+    containerP1.innerHTML = ""
+    countPlayer1.innerHTML = player1 + " : " + player1count;
+    let countPlayer2 = document.createElement('div');
+    countPlayer2.classList.add('playCount');
+    containerP2.innerHTML = ""
+    countPlayer2.innerHTML = player2 + " : " + player2count;
+    containerP1.append(countPlayer1)
+    containerP2.append(countPlayer2)
+};
