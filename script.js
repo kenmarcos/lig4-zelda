@@ -8,8 +8,8 @@ let table = [
 
 ];
 
-let player1 = 'Player 1'
-let player2 = 'Player 2'
+let player1
+let player2 
 
 let win
 
@@ -17,7 +17,6 @@ let game = document.querySelector("#game");
 let timerContainer = document.getElementById('timerContainer')
 
 const btnQuit = document.getElementById("quit");
-// btnQuit.addEventListener('click', toQuit);
 
 //FUNCAO PARA CRIAR TABALE COM BASE NA ARRAY TABLE   
 const createTable = () => {
@@ -325,7 +324,10 @@ function timer() {
 
 const toStart = () => {
     let inputsNames = document.querySelectorAll('.input')
-    if (inputsNames[0].value !== "" || inputsNames[1].value !== "") {
+    if (inputsNames[0].value === "" || inputsNames[1].value === "") {
+        player1 = 'Player 1'
+        player2 = 'Player 2'
+    } else {
         player1 = inputsNames[0].value
         player2 = inputsNames[1].value
     }
@@ -350,6 +352,8 @@ const btnRestart = document.getElementById("restart");
 btnRestart.addEventListener('click', toRestar);
 
 const getNames = () => {
+
+
   const form = document.createElement('form')
   form.classList.add('form')
   game.append(form)
@@ -451,3 +455,12 @@ const playCounter = (player) => {
     containerP1.append(countPlayer1)
     containerP2.append(countPlayer2)
 };
+
+const showInfos = document.getElementById('showInfos')
+const buttons = document.getElementsByClassName('buttons')[0]
+
+const toQuit = () => {
+    document.location.reload(true)
+}
+
+btnQuit.addEventListener('click', toQuit);
