@@ -68,7 +68,7 @@ html {
 body {
     position: absolute;
     background-color: var(--color-three);
-    background-image: url(/img/bg-image.png);
+    background-image: url(img/bg-image.png);
     background-position: 50% 0%;
     background-repeat: no-repeat;
     background-size: 200vh;
@@ -486,12 +486,14 @@ button:hover {
         width: 4rem;
         height: 4rem;
     }
+
     .disc1 {
         background: url(img/link.png);
         background-position: 50% 50%;
         background-size: 6rem;
         background-repeat: no-repeat;
     }
+
     .disc2 {
         background: url(img/vilain.png);
         background-position: 50% 50%;
