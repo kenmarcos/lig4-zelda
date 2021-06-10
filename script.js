@@ -12,7 +12,6 @@ let player1 = 'Player 1'
 let player2 = 'Player 2'
 
 let win
-console.log(win)
 
 let game = document.querySelector("#game");
 let timerContainer = document.getElementById('timerContainer')
