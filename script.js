@@ -82,7 +82,7 @@ const finalMsg = (player) => {
         message.innerText = 'Go to the next turn!'
         alert.appendChild(message)
         const image = document.createElement('div')
-        image.setAttribute('clas', `${player}-img`)
+        image.setAttribute('class', `${player}-img`)
         alert.appendChild(image)
         game.appendChild(alert)
        
@@ -93,7 +93,7 @@ const finalMsg = (player) => {
         message.innerText = 'Congratulations, You save the princess Zelda!'
         alert.appendChild(message)
         const image = document.createElement('div')
-        image.setAttribute('clas', `${player}-img`)
+        image.setAttribute('class', `${player}-img`)
         alert.appendChild(image)
         game.appendChild(alert)
        
@@ -104,7 +104,7 @@ const finalMsg = (player) => {
         message.innerText = 'Oh no!!! The vilain catch the princess...'
         alert.appendChild(message)
         const image = document.createElement('div')
-        image.setAttribute('clas', `${player}-img`)
+        image.setAttribute('class', `${player}-img`)
         alert.appendChild(image)
         game.appendChild(alert)
      
