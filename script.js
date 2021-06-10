@@ -172,16 +172,18 @@ const verticalVictroy = (arr) => {
                 if (cell === arr[i + 1][j] && cell === arr[i + 2][j] && cell === arr[i + 3][j]) {
                     finalMsg("alertPlayer1")
                     stopTimer();
-                    win = player1
                     playCounter(1)
+                    win = player1
+                    break
                 }
             } else if (cell === 'P') {
                 // Checar se as próximas 3 células têm o mesmo valor
                 if (cell === arr[i + 1][j] && cell === arr[i + 2][j] && cell === arr[i + 3][j]) {
                     finalMsg("alertPlayer2")
                     stopTimer();
-                    win = player2
                     playCounter(2)
+                    win = player2
+                   break
                 }
             }
         }
@@ -295,9 +297,6 @@ const changeTurn = (evt) => {
             player1Turn()
         }
     } 
-    horizontalVictory(table)
-    verticalVictroy(table)
-    draw(table)
 }
 
 function timer() {
@@ -444,11 +443,11 @@ const playCounter = (player) => {
     let countPlayer1 = document.createElement('div');
     countPlayer1.classList.add('playCount');
     containerP1.innerHTML = ""
-    countPlayer1.innerHTML = player1 + " " + player1count;
+    countPlayer1.innerHTML = player1 + " : " + player1winCount;
     let countPlayer2 = document.createElement('div');
     countPlayer2.classList.add('playCount');
     containerP2.innerHTML = ""
-    countPlayer2.innerHTML = player2 + " " + player2count;
+    countPlayer2.innerHTML = player2 + " : " + player2WinCount;
     containerP1.append(countPlayer1)
     containerP2.append(countPlayer2)
 };
