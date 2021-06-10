@@ -1,10 +1,10 @@
 let table = [
-  ["X", "X", "X", "X", "X", "X", "X"],
-  ["X", "X", "X", "X", "X", "X", "X"],
-  ["X", "X", "X", "X", "X", "X", "X"],
-  ["X", "X", "X", "X", "X", "X", "X"],
-  ["X", "X", "X", "X", "X", "X", "X"],
-  ["X", "X", "X", "X", "X", "X", "X"],
+    ["X", "X", "X", "X", "X", "X", "X"],
+    ["X", "X", "X", "X", "X", "X", "X"],
+    ["X", "X", "X", "X", "X", "X", "X"],
+    ["X", "X", "X", "X", "X", "X", "X"],
+    ["X", "X", "X", "X", "X", "X", "X"],
+    ["X", "X", "X", "X", "X", "X", "X"],
 
 ];
 
@@ -27,124 +27,147 @@ const createTable = () => {
   player1Turn()
 }
 //funcao reiniciar table
-const restartTable = () =>{
-  let game = document.getElementById('game');
-  game.innerHTML = "";
+const restartTable = () => {
+    let game = document.getElementById('game');
+    game.innerHTML = "";
+    for (let i = 0; i < table.length; i++) {
+        for (let j = 0; j < table[i].length; j++) {
+            table[i][j] = "X";
+        }
+    }
 }
 
 //chamada mensagem de vitoria
 const finalMsg = (player) => {
-  const alert = document.createElement('div')
-  alert.classList.add('alert')
-  const message = document.createElement('p')
-  if (player === undefined) {
-    message.innerText = `Empate`
-  } else {
-    message.innerText = `${player} venceu!`
-  }
-  alert.appendChild(message)
-  game.appendChild(alert)
+  
+    if (player === 'alertEmpate') {
+        const alert = document.createElement('div')
+        alert.classList.add(player)
+        const message = document.createElement('p')
+        message.innerText = 'Go to the next turn!'
+        alert.appendChild(message)
+        game.appendChild(alert)
+       
+    } else if (player === 'alertPlayer1') {
+        const alert = document.createElement('div')
+        alert.classList.add(player)
+        const message = document.createElement('p')
+        message.innerText = 'Congratulations, You save the princess Zelda!'
+        alert.appendChild(message)
+        game.appendChild(alert)
+       
+    } else if (player === 'alertPlayer2') {
+        const alert = document.createElement('div')
+        alert.classList.add(player)
+        const message = document.createElement('p')
+        message.innerText = 'Oh no!!! The vilain catch the princess...'
+        alert.appendChild(message)
+        game.appendChild(alert)
+     
+    }
 }
 
 // vitória horizontal
 const horizontalVictory = (arr) => {
-  const edgeX = arr[0].length - 3;
+    const edgeX = arr[0].length - 3;
 
-  // iterar em cada linha
-  for(let i = 0; i < arr.length; i++){
+    // iterar em cada linha
+    for (let i = 0; i < arr.length; i++) {
 
-    // iterar em cada célula da linha em questão
-    for(let j = 0; j < edgeX; j++) {
-      let cell = arr[i][j];
-      
-      if(cell === 'V') {
-        // Checar se as próximas 3 células têm o mesmo valor V
-        if(cell === arr[i][j+1] && cell === arr[i][j+2] && cell === arr[i][j+3]) {
-          finalMsg("Jogador 1")
+        // iterar em cada célula da linha em questão
+        for (let j = 0; j < edgeX; j++) {
+            let cell = arr[i][j];
+
+            if (cell === 'V') {
+                // Checar se as próximas 3 células têm o mesmo valor V
+                if (cell === arr[i][j + 1] && cell === arr[i][j + 2] && cell === arr[i][j + 3]) {
+                    finalMsg("alertPlayer1")
+                    break
+                }
+            } else if (cell === 'P') {
+                // Checar se as próximas 3 células têm o mesmo valor P
+                if (cell === arr[i][j + 1] && cell === arr[i][j + 2] && cell === arr[i][j + 3]) {
+                    const alert = document.createElement('div')
+                    finalMsg("alertPlayer2")
+                    break
+                }
+            }
         }
-      } else if (cell === 'P') {
-        // Checar se as próximas 3 células têm o mesmo valor P
-        if(cell === arr[i][j+1] && cell === arr[i][j+2] && cell === arr[i][j+3]) {
-          const alert = document.createElement('div')
-          finalMsg("Jogador 2")
-        }
-      }
     }
-  }
 }
 
 // vitória vertical
 const verticalVictroy = (arr) => {
-  const edgeY = arr.length - 3
+    const edgeY = arr.length - 3
 
-  for(let i = 0; i < edgeY; i++){
+    for (let i = 0; i < edgeY; i++) {
 
-    // iterar cada célula na linha
-    for(let j = 0; j < arr[0].length; j++) {
-      cell = arr[i][j];
-      
-      if(cell === 'V') {
-        // Checar se as próximas 3 células têm o mesmo valor
-        if(cell === arr[i+1][j] && cell === arr[i+2][j] && cell === arr[i+3][j]) {
-          finalMsg("Jogador 1")
+        // iterar cada célula na linha
+        for (let j = 0; j < arr[0].length; j++) {
+            cell = arr[i][j];
+
+            if (cell === 'V') {
+                // Checar se as próximas 3 células têm o mesmo valor
+                if (cell === arr[i + 1][j] && cell === arr[i + 2][j] && cell === arr[i + 3][j]) {
+                    finalMsg("alertPlayer1")
+                }
+            } else if (cell === 'P') {
+                // Checar se as próximas 3 células têm o mesmo valor
+                if (cell === arr[i + 1][j] && cell === arr[i + 2][j] && cell === arr[i + 3][j]) {
+                    finalMsg("alertPlayer2")
+                }
+            }
         }
-      } else if (cell === 'P') {
-        // Checar se as próximas 3 células têm o mesmo valor
-        if(cell === arr[i+1][j] && cell === arr[i+2][j] && cell === arr[i+3][j]) {
-          finalMsg("Jogador 2")
-        }
-      }
     }
-  }
 }
 
 //vitoria diagonal
-const diagonalWin = (player) =>{
-  for(let i = 0; i < 3; i++){
-    for(let j = 0; j < 4; j++){
-      if(player === table[i][j] && player === table[i+1][j+1] && player === table[i+2][j+2] && player === table[i+3][j+3]){
-        if(player === "V"){
-          finalMsg("Jogador 1")
-        }else{
-          finalMsg("Jogador 2")
+const diagonalWin = (player) => {
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 4; j++) {
+            if (player === table[i][j] && player === table[i + 1][j + 1] && player === table[i + 2][j + 2] && player === table[i + 3][j + 3]) {
+                if (player === "V") {
+                    finalMsg("alertPlayer1")
+                } else {
+                    finalMsg("alertPlayer2")
+                }
+            }
         }
-      }
     }
-  }
-  for(let i = 5; i > 2; i--){
-    for(let j = 0; j < 4; j++){
-      if(player === table[i][j] && player === table[i-1][j+1] && player === table[i-2][j+2] && player === table[i-3][j+3]){
-        if(player === "V"){
-          finalMsg("Jogador 1")
-        }else{
-          finalMsg("Jogador 2")
+    for (let i = 5; i > 2; i--) {
+        for (let j = 0; j < 4; j++) {
+            if (player === table[i][j] && player === table[i - 1][j + 1] && player === table[i - 2][j + 2] && player === table[i - 3][j + 3]) {
+                if (player === "V") {
+                    finalMsg("alertPlayer1")
+                } else {
+                    finalMsg("alertPlayer2")
+                }
+            }
         }
-      }
     }
-  }
 }
 
 // empate
 const draw = (arr) => {
-  let cont = 0
-  for (let i = 0; i < arr[0].length; i++) {
-    if (arr[0][i] !== 'X') {
-      cont++
-    } 
-  }
-  if (cont === 7) {
-    finalMsg()
-  }
+    let cont = 0
+    for (let i = 0; i < arr[0].length; i++) {
+        if (arr[0][i] !== 'X') {
+            cont++
+        }
+    }
+    if (cont === 7) {
+        finalMsg('alertEmpate')
+    }
 }
 
 const registerPosition = (id, player) => {
 
-  for (let i = 5; i >= 0; i--)
-    if (table[i][id] === "X") {
-      table[i][id] = player
-      break;
-    }
-  console.log(table);
+    for (let i = 5; i >= 0; i--)
+        if (table[i][id] === "X") {
+            table[i][id] = player
+            break;
+        }
+    console.log(table);
 }
 
 const columns = document.querySelectorAll('.column')
@@ -152,51 +175,85 @@ let turn = 'turn1'
 
 // FUNÇÃO DE MUDANÇA DE TURNO E COLOCAÇÃO DOS DISCOS
 const changeTurn = (evt) => {
-  // selecionar a coluna
-  
-  let selectedColumn = evt.currentTarget
+    // selecionar a coluna
 
-  // selecionar última célula vazia da coluna
-  let celula
-  for (let i = 0; i < selectedColumn.childNodes.length; i++) {
-    if (selectedColumn.childNodes[i].childElementCount === 0) {
-      celula = selectedColumn.childNodes[i]
+    let selectedColumn = evt.currentTarget
+
+    // selecionar última célula vazia da coluna
+    let celula
+    for (let i = 0; i < selectedColumn.childNodes.length; i++) {
+        if (selectedColumn.childNodes[i].childElementCount === 0) {
+            celula = selectedColumn.childNodes[i]
+        }
     }
-  }
 
-  if (turn === 'turn1') { // turno do jogador 1
-    // colocar o disco do jogador 1
-    const disc1 = document.createElement('div')
-    disc1.classList.add('disc1')
-    celula.appendChild(disc1)
-    turn = 'turn2'
-    registerPosition(Number(selectedColumn.id), "V");
-    diagonalWin("V")
-    player2Turn()
-  } else { // turno do jogador 2
-    // colocar o disco do jogador 2
-    const disc2 = document.createElement('div')
-    disc2.classList.add('disc2')
-    celula.appendChild(disc2)
-    turn = 'turn1'
-    registerPosition(Number(selectedColumn.id), "P");
-    diagonalWin("P")
-    player1Turn()
-  }
+    if (turn === 'turn1') { // turno do jogador 1
+        // colocar o disco do jogador 1
+        const disc1 = document.createElement('div')
+        disc1.classList.add('disc1')
+        celula.appendChild(disc1)
+        turn = 'turn2'
+        registerPosition(Number(selectedColumn.id), "V");
+        diagonalWin("V")
+        player2Turn()
+    } else { // turno do jogador 2
+        // colocar o disco do jogador 2
+        const disc2 = document.createElement('div')
+        disc2.classList.add('disc2')
+        celula.appendChild(disc2)
+        turn = 'turn1'
+        registerPosition(Number(selectedColumn.id), "P");
+        diagonalWin("P")
+        player1Turn()
+    }
 
-  horizontalVictory(table)
-  verticalVictroy(table)
-  draw(table)
+    horizontalVictory(table)
+    verticalVictroy(table)
+    draw(table)
+}
+
+function timer() {
+    let sec = 0;
+    let min = 0;
+    let hr = 0;
+    timerID = setInterval(function() {
+        let timer = (hr < 10 ? '0' + hr : hr) + ':' + (min < 10 ? '0' + min : min) + ':' + (sec < 10 ? '0' + sec : sec);
+        document.getElementById("timer").innerHTML = timer;
+        if (sec === 59) {
+            min++;
+            sec = 0;
+        }
+        if (min === 60) {
+            hr++;
+            min = 0;
+        }
+        sec++
+    }, 1000);
+}
+
+const stopTimer = () => {
+    clearInterval(timerID);
+}
+
+const toStart = () => {
+    restartTable();
+    createTable();
+    stopTimer();
+    timer();
+}
+
+const toRestar = () => {
+    restartTable();
+    createTable();
+    stopTimer()
+    timer()
 }
 
 const btnStart = document.getElementById("start");
-btnStart.addEventListener('click', restartTable);
-btnStart.addEventListener('click', createTable);
+btnStart.addEventListener('click', toStart);
 
 const btnRestart = document.getElementById("restart");
-btnRestart.addEventListener('click', restartTable);
-btnRestart.addEventListener('click', createTable);
-
+btnRestart.addEventListener('click', toRestar);
 
 const getNames = () => {
   const form = document.createElement('form')
@@ -207,7 +264,7 @@ const getNames = () => {
   divInput1.classList.add('div-input')
   form.appendChild(divInput1)
   const imgPlayer1 = document.createElement('img')
-  imgPlayer1.src = 'https://picsum.photos/100'
+  imgPlayer1.src = './img/link.png'
   imgPlayer1.classList.add('img')
   divInput1.appendChild(imgPlayer1)
   const inputPlayer1 = document.createElement('input')
@@ -220,7 +277,7 @@ const getNames = () => {
   divInput2.classList.add('div-input')
   form.appendChild(divInput2)
   const imgPlayer2 = document.createElement('img')
-  imgPlayer2.src = 'https://picsum.photos/100'
+  imgPlayer2.src = './img/vilain.png'
   imgPlayer2.classList.add('img')
   divInput2.appendChild(imgPlayer2)
   const inputPlayer2 = document.createElement('input')
@@ -235,16 +292,33 @@ const divPlayer = document.getElementById('player')
 
 const player1Turn = () => {
   divPlayer.innerHTML = " "
-  let player1 = document.createElement('p')
+  divPlayer.classList.remove('div-player2')
+  divPlayer.classList.add('div-player1')
+
+  const player1 = document.createElement('p')
   player1.innerText = 'Jogador 1'
   player1.classList.add('player1')
   divPlayer.appendChild(player1)
+
+  const imgPlayer1 = document.createElement('img')
+  imgPlayer1.src = './img/link.png'
+  imgPlayer1.classList.add('img-div')
+  divPlayer.appendChild(imgPlayer1)
 }
 
 const player2Turn = () => {
   divPlayer.innerHTML = " "
-  let player2 = document.createElement('p')
+  divPlayer.classList.remove('div-player1')
+  divPlayer.classList.add('div-player2')
+
+  const player2 = document.createElement('p')
   player2.innerText = 'Jogador 2'
   player2.classList.add('player2')
   divPlayer.appendChild(player2)
+
+  const imgPlayer2 = document.createElement('img')
+  imgPlayer2.src = './img/vilain.png'
+  imgPlayer2.classList.add('img-div')
+  divPlayer.appendChild(imgPlayer2)
+
 }

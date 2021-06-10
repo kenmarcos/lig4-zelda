@@ -1,160 +1,282 @@
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,
+h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,
+code,del,dfn,em,img,ins,kbd,q,s,samp,small,
+strike,strong,sub,sup,tt,var,b,u,i,center,
+dl,dt,dd,ol,ul,li,fieldset,form,label,
+legend,table,caption,tbody,tfoot,thead,tr,th,td,
+article,aside,canvas,details,embed,figure,
+figcaption,footer,header,hgroup,menu,nav,output,
+ruby,section,summary,time,mark,audio,video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
 }
+
 
 /* HTML5 display-role reset for older browsers */
 
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
-	display: block;
+article,aside,details,figcaption,
+figure,footer,header,
+hgroup,menu,nav,section {
+    display: block;
 }
 
 body {
-	line-height: 1;
+    line-height: 1;
 }
 
-ol, ul {
-	list-style: none;
+ol,
+ul {
+    list-style: none;
 }
 
-blockquote, q {
-	quotes: none;
+blockquote,
+q {
+    quotes: none;
 }
 
-blockquote:before, blockquote:after, q:before, q:after {
-	content: '';
-	content: none;
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
 }
 
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
+
 /* <<<< FIM DO RESET >>>> */
+
 
 /* <<<< INICIO VARIÁVEIS >>>> */
 
 :root {
-	--font-family-one: 'VT323', monospace;
-	--font-family-two: 'Press Start 2P', cursive;
-	--font-size-title: 3rem;
-	--font-size-subtitle: 2rem;
-	--font-size-p: 1rem;
-	--color-one: rgb(209, 192, 38);
-	--color-two: khaki;
-	--color-three: rgb(241, 241, 241);
-	--color-for: rgb(255, 255, 255);
-	--color-five: rgb(66, 66, 66);
+    --font-family-one: 'VT323', monospace;
+    --font-family-two: 'Press Start 2P', cursive;
+    --font-size-title: 3rem;
+    --font-size-subtitle: 2rem;
+    --font-size-p: 1rem;
+    --color-one: rgb(209, 192, 38);
+    --color-two: khaki;
+    --color-three: rgb(241, 241, 241);
+    --color-for: rgb(255, 255, 255);
+    --color-five: rgb(66, 66, 66);
+    --color-alert: rgb(33 28 43 / 79%);
 }
+
 
 /* <<<< FIM VARIÁVEIS >>>> */
 
+
 /* <<<< ESTILIZAÇAO DA PAGINA >>>> */
 
-#header div {
-	width: 100vw;
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-	background-color: var(--color-two);
-}
-
-#header img {
-	width: 10rem;
-}
-
 body {
-	background-color: var(--color-three);
+    position: absolute;
+    background-color: var(--color-three);
+    background-image: url(/img/bg-image.png);
+    background-position: 50% -10%;
+    background-repeat: no-repeat;
 }
 
 h1 {
-	font-family: var(--font-family-two);
-	font-size: var(--font-size-title);
-	color: var(--color-one);
+    font-family: var(--font-family-two);
+    font-size: var(--font-size-title);
+    color: var(--color-one);
 }
 
 h2 {
-	font-size: var(--font-size-subtitle);
-	color: var(--color-one);
+    font-size: var(--font-size-subtitle);
+    color: var(--color-one);
+    font-family: var(--font-family-one);
 }
 
 p {
-	font-size: var(--font-size-p);
-	color: var(--color-five);
+    font-size: var(--font-size-p);
+    color: var(--color-five);
 }
 
+#header div {
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-two);
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#header img {
+    width: 12rem;
+    height: 12vh;
+    background-size: 8rem;
+}
+
+#header h1 {
+    font-size: 1.5rem;
+    line-height: 2.35rem;
+}
+
+button {
+    font-family: var(--font-family-one);
+    font-size: 1.4rem;
+    border: none;
+    border-radius: 3px;
+    padding: 12px 40px 12px 7px;
+    opacity: 75%;
+    background-color: var(--color-two);
+    background-image: url(img/shield.gif);
+    background-size: 2rem;
+    background-repeat: no-repeat;
+    background-position: 94% 50%;
+    margin: 0.2rem;
+}
+
+#info {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    margin-top: 1rem;
+    padding: 0px 10px;
+}
+
+#info h2 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+button:hover {
+    opacity: 87%;
+}
+
+
 /* <<<< FIM DA ESTILIZAÇAO DA PAGINA >>>> */
+
 
 /* <<<< ESTILIZAÇAO DO JOGO >>>> */
 
 #game {
-	display: flex;
-	justify-content: center;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin-top: 3vh;
 }
 
 .column {
-	display: flex;
-	flex-direction: column;
-	width: 6vw;
-	height: 20rem;
-	border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    width: 13vw;
+    height: 15rem;
+    border: 1px solid black;
+    background-color: hsla(0, 0%, 100%, 0.286);
 }
 
 .cell {
-	height: 5rem;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.disc1, .disc2 {
-	border-radius: 50%;
-	width: 4vw;
-	height: 4vw;
+.disc1,
+.disc2 {
+    width: 10vw;
+    height: 10vw;
 }
 
 .disc1 {
-	background-color: rgb(197, 0, 0);
+    background: url(img/link.png);
+    background-position: 50% 50%;
+    background-size: 15vw;
+    background-repeat: no-repeat;
 }
 
 .disc2 {
-	background-color: var(--color-five);
+    background: url(img/vilain.png);
+    background-position: 50% 50%;
+    background-size: 15vw;
+    background-repeat: no-repeat;
 }
 
-.alert {
-	width: 50rem;
-	height:30rem;
-	background-color: rgba(0, 128, 0, 0.384);
-	position: absolute;
-	z-index: 1;
+.alertEmpate {
+    width: 97vw;
+    height: 47vh;
+    background-color: var(--color-alert);
+    position: absolute;
+    z-index: 1;
+    top: 18rem;
+    background-image: url(img/link-fight-2.png);
+    background-size: 20rem;
+    background-repeat: no-repeat;
+    background-position: 47% 100%;
+}
+.alertEmpate p {
+    margin-top: 1rem;
+}
+.alertPlayer1 {
+    width: 97vw;
+    height: 47vh;
+    background-color: var(--color-alert);
+    position: absolute;
+    z-index: 1;
+    top: 18rem;
+    background-image: url(img/link+zelda.png);
+    background-size: 10rem ;
+    background-repeat: no-repeat;
+    background-position: 47% 115%;
+}
+.alertPlayer2 {
+    width: 97vw;
+    height: 47vh;
+    background-color: var(--color-alert);
+    position: absolute;
+    z-index: 1;
+    top: 18rem;
+    background-image: url(img/vilain2.png);
+    background-size: 7rem;
+    background-repeat: no-repeat;
+    background-position: 47% 95%;
+}
+.alertPlayer1 p,
+.alertPlayer2 p,
+.alertEmpate p {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 2.8rem;
+    font-family: var(--font-family-one);
+    font-weight: normal;
+    color: var(--color-two);
 }
 
 .form {
-	width: 20rem;
-	height:30rem;
-	background-color: rgba(163, 162, 162, 0.664);
-	position: absolute;
-	z-index: 1;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-around;
+    width: 18rem;
+    height: 25rem;
+    background-color: rgba(163, 162, 162, 0.664);
+    position: absolute;
+    top: 16rem;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .div-input {
-	/* text-align: center; */
-	/* display: flex;
-	flex-direction: column; */
+
 }
 
 .img {
 	display: block;
-	margin: 0 auto 1rem;
+	margin: 0 auto;
+    width: 8rem;
 }
 
 .input {
@@ -171,27 +293,33 @@ p {
 
 #player {
     width: 22rem;
-    height: 3rem;
-    margin: 0 auto;
+    height: 4rem;
+    margin: 1rem auto;    
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
 .player1, .player2 {
-	font-size: 2rem;
-	color: white;
-	padding: 0.5rem;
-	margin: 0.2rem 0;
+    font-size: 2rem;
+    color: white;
 }
 
-.player1 {
-	background-color: rgb(197, 0, 0);
+.div-player1 {
+    background-color: red;
 }
 
-.player2 {
-	background-color: var(--color-five);
+.div-player2 {
+    background-color: var(--color-five);
+}
+
+.img-div {
+    width: 4rem;
 }
 
 /* <<<< FIM DA ESTILIZAÇAO DO JOGO >>>> */
+
 
 /* <<<< DESKTOP VERSION>>>> */
 
