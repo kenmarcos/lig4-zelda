@@ -8,6 +8,12 @@ let table = [
 
 ];
 
+let player1 = 'Player 1'
+let player2 = 'Player 2'
+
+let win
+console.log(win)
+
 let game = document.querySelector("#game");
 let timerContainer = document.getElementById('timerContainer')
 //FUNCAO PARA CRIAR TABALE COM BASE NA ARRAY TABLE   
@@ -31,6 +37,8 @@ const createTable = () => {
         timer.setAttribute('id','timer')
         setTimeout(function() {
         return timerContainer.appendChild(timer)}, 1000);
+        player1Turn()
+
     }
 
 //funcao reiniciar table
@@ -77,6 +85,9 @@ const finalMsg = (player) => {
         const message = document.createElement('p')
         message.innerText = 'Go to the next turn!'
         alert.appendChild(message)
+        const image = document.createElement('div')
+        image.setAttribute('clas', `${player}-img`)
+        alert.appendChild(image)
         game.appendChild(alert)
        
     } else if (player === 'alertPlayer1') {
@@ -85,6 +96,9 @@ const finalMsg = (player) => {
         const message = document.createElement('p')
         message.innerText = 'Congratulations, You save the princess Zelda!'
         alert.appendChild(message)
+        const image = document.createElement('div')
+        image.setAttribute('clas', `${player}-img`)
+        alert.appendChild(image)
         game.appendChild(alert)
        
     } else if (player === 'alertPlayer2') {
@@ -93,6 +107,9 @@ const finalMsg = (player) => {
         const message = document.createElement('p')
         message.innerText = 'Oh no!!! The vilain catch the princess...'
         alert.appendChild(message)
+        const image = document.createElement('div')
+        image.setAttribute('clas', `${player}-img`)
+        alert.appendChild(image)
         game.appendChild(alert)
      
     }
@@ -114,6 +131,7 @@ const horizontalVictory = (arr) => {
                 if (cell === arr[i][j + 1] && cell === arr[i][j + 2] && cell === arr[i][j + 3]) {
                     finalMsg("alertPlayer1")
                     stopTimer();
+                    win = 'player1'
                     break
                 }
             } else if (cell === 'P') {
@@ -122,6 +140,7 @@ const horizontalVictory = (arr) => {
                     const alert = document.createElement('div')
                     finalMsg("alertPlayer2")
                     stopTimer();
+                    win = 'player2'
                     break
                 }
             }
@@ -144,12 +163,14 @@ const verticalVictroy = (arr) => {
                 if (cell === arr[i + 1][j] && cell === arr[i + 2][j] && cell === arr[i + 3][j]) {
                     finalMsg("alertPlayer1")
                     stopTimer();
+                    win = player1
                 }
             } else if (cell === 'P') {
                 // Checar se as próximas 3 células têm o mesmo valor
                 if (cell === arr[i + 1][j] && cell === arr[i + 2][j] && cell === arr[i + 3][j]) {
                     finalMsg("alertPlayer2")
                     stopTimer();
+                    win = player2
                 }
             }
         }
@@ -164,9 +185,11 @@ const diagonalWin = (player) => {
                 if (player === "V") {
                     finalMsg("alertPlayer1")
                     stopTimer();
+                    win = 'player1'
                 } else {
                     finalMsg("alertPlayer2")
                     stopTimer();
+                    win = 'player2'
                 }
             }
         }
@@ -235,7 +258,12 @@ const changeTurn = (evt) => {
         turn = 'turn2'
         registerPosition(Number(selectedColumn.id), "V");
         diagonalWin("V")
-        player2Turn()
+        horizontalVictory(table)
+        verticalVictroy(table)
+        draw(table)
+        if (win === undefined) {
+            player2Turn()
+        }
     } else { // turno do jogador 2
         // colocar o disco do jogador 2
         const disc2 = document.createElement('div')
@@ -244,7 +272,12 @@ const changeTurn = (evt) => {
         turn = 'turn1'
         registerPosition(Number(selectedColumn.id), "P");
         diagonalWin("P")
-        player1Turn()
+        horizontalVictory(table)
+        verticalVictroy(table)
+        draw(table)
+        if (win === undefined) {
+            player1Turn()
+        }
     } 
     playCounter();
     horizontalVictory(table)
@@ -252,12 +285,42 @@ const changeTurn = (evt) => {
     draw(table)
 }
 
+function timer() {
+    let sec = 0;
+    let min = 0;
+    let hr = 0;
+    timerID = setInterval(function() {
+        let timer = (hr < 10 ? '0' + hr : hr) + ':' + (min < 10 ? '0' + min : min) + ':' + (sec < 10 ? '0' + sec : sec);
+        document.getElementById("timer").innerHTML = timer;
+        if (sec === 59) {
+            min++;
+            sec = 0;
+        }
+        if (min === 60) {
+            hr++;
+            min = 0;
+        }
+        sec++
+    }, 1000);
+}
+
+// const stopTimer = () => {
+//     clearInterval(timerID);
+// }
+
+
 const toStart = () => {
+    let inputsNames = document.querySelectorAll('.input')
+    if (inputsNames[0].value !== "" || inputsNames[1].value !== "") {
+        player1 = inputsNames[0].value
+        player2 = inputsNames[1].value
+    }
     turn = 'turn1' 
     restartTable();
     createTable();
-    stopTimer();
+    stopTimer()    
     timer();
+    win = undefined
 }
 
 const toRestar = () => {
@@ -266,6 +329,7 @@ const toRestar = () => {
     createTable();
     stopTimer()
     timer()
+    win = undefined
 }
 
 const btnStart = document.getElementById("start");
@@ -284,7 +348,7 @@ const getNames = () => {
   form.appendChild(divInput1)
   const imgPlayer1 = document.createElement('img')
   imgPlayer1.src = './img/link.png'
-  imgPlayer1.classList.add('img')
+  imgPlayer1.classList.add('img1')
   divInput1.appendChild(imgPlayer1)
   const inputPlayer1 = document.createElement('input')
   inputPlayer1.setAttribute('type', 'text')
@@ -292,12 +356,17 @@ const getNames = () => {
   inputPlayer1.classList.add('input')
   divInput1.appendChild(inputPlayer1)
 
+  const versus = document.createElement('p')
+  versus.classList.add('versus')
+  versus.innerText = 'VS'
+  form.appendChild(versus)
+
   const divInput2 = document.createElement('div')
   divInput2.classList.add('div-input')
   form.appendChild(divInput2)
   const imgPlayer2 = document.createElement('img')
   imgPlayer2.src = './img/vilain.png'
-  imgPlayer2.classList.add('img')
+  imgPlayer2.classList.add('img2')
   divInput2.appendChild(imgPlayer2)
   const inputPlayer2 = document.createElement('input')
   inputPlayer2.setAttribute('type', 'text')
@@ -314,10 +383,10 @@ const player1Turn = () => {
   divPlayer.classList.remove('div-player2')
   divPlayer.classList.add('div-player1')
 
-  const player1 = document.createElement('p')
-  player1.innerText = 'Jogador 1'
-  player1.classList.add('player1')
-  divPlayer.appendChild(player1)
+  const pPlayer1 = document.createElement('p')
+  pPlayer1.innerText = player1
+  pPlayer1.classList.add('p-player1')
+  divPlayer.appendChild(pPlayer1)
 
   const imgPlayer1 = document.createElement('img')
   imgPlayer1.src = './img/link.png'
@@ -330,10 +399,10 @@ const player2Turn = () => {
   divPlayer.classList.remove('div-player1')
   divPlayer.classList.add('div-player2')
 
-  const player2 = document.createElement('p')
-  player2.innerText = 'Jogador 2'
-  player2.classList.add('player2')
-  divPlayer.appendChild(player2)
+  const pPlayer2 = document.createElement('p')
+  pPlayer2.innerText = player2
+  pPlayer2.classList.add('p-player2')
+  divPlayer.appendChild(pPlayer2)
 
   const imgPlayer2 = document.createElement('img')
   imgPlayer2.src = './img/vilain.png'
@@ -359,11 +428,11 @@ const playCounter = () => {
     let countPlayer1 = document.createElement('div');
     countPlayer1.classList.add('playCount');
     containerP1.innerHTML = ""
-    countPlayer1.innerHTML = "Jogador 1: " + player1count;
+    countPlayer1.innerHTML = player1 + " : " + player1count;
     let countPlayer2 = document.createElement('div');
     countPlayer2.classList.add('playCount');
     containerP2.innerHTML = ""
-    countPlayer2.innerHTML = "Jogador 2:" + player2count;
+    countPlayer2.innerHTML = player2 + " : " + player2count;
     containerP1.append(countPlayer1)
     containerP2.append(countPlayer2)
 };
