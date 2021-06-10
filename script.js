@@ -38,7 +38,7 @@ const createTable = () => {
         setTimeout(function() {
         return timerContainer.appendChild(timer)}, 1000);
         player1Turn()
-
+        playCounter(0)
     }
 
 //funcao reiniciar table
@@ -132,6 +132,7 @@ const horizontalVictory = (arr) => {
                     finalMsg("alertPlayer1")
                     stopTimer();
                     win = 'player1'
+                    playCounter(1)
                     break
                 }
             } else if (cell === 'P') {
@@ -141,6 +142,7 @@ const horizontalVictory = (arr) => {
                     finalMsg("alertPlayer2")
                     stopTimer();
                     win = 'player2'
+                    playCounter(2)
                     break
                 }
             }
@@ -164,6 +166,7 @@ const verticalVictroy = (arr) => {
                     finalMsg("alertPlayer1")
                     stopTimer();
                     win = player1
+                    playCounter(1)
                 }
             } else if (cell === 'P') {
                 // Checar se as próximas 3 células têm o mesmo valor
@@ -171,6 +174,7 @@ const verticalVictroy = (arr) => {
                     finalMsg("alertPlayer2")
                     stopTimer();
                     win = player2
+                    playCounter(2)
                 }
             }
         }
@@ -186,10 +190,12 @@ const diagonalWin = (player) => {
                     finalMsg("alertPlayer1")
                     stopTimer();
                     win = 'player1'
+                    playCounter(1)
                 } else {
                     finalMsg("alertPlayer2")
                     stopTimer();
                     win = 'player2'
+                    playCounter(2)
                 }
             }
         }
@@ -200,9 +206,11 @@ const diagonalWin = (player) => {
                 if (player === "V") {
                     finalMsg("alertPlayer1")
                     stopTimer();
+                    playCounter(1)
                 } else {
                     finalMsg("alertPlayer2")
                     stopTimer();
+                    playCounter(2)
                 }
             }
         }
@@ -249,7 +257,7 @@ const changeTurn = (evt) => {
             celula = selectedColumn.childNodes[i]
         }
     }
-
+        
     if (turn === 'turn1') { // turno do jogador 1
         // colocar o disco do jogador 1
         const disc1 = document.createElement('div')
@@ -266,6 +274,7 @@ const changeTurn = (evt) => {
         }
     } else { // turno do jogador 2
         // colocar o disco do jogador 2
+        
         const disc2 = document.createElement('div')
         disc2.classList.add('disc2')
         celula.appendChild(disc2)
@@ -279,7 +288,6 @@ const changeTurn = (evt) => {
             player1Turn()
         }
     } 
-    playCounter();
     horizontalVictory(table)
     verticalVictroy(table)
     draw(table)
@@ -411,28 +419,26 @@ const player2Turn = () => {
 
 }
 
-const playCounter = () => {
-    let player2count = 0;
-    let player1count = 0;
-    for(let i = 0; i < table.length; i++){
-        for(let j = 0; j < table[0].length; j++){
-            if(table[i][j] === "V"){
-                player1count++
-            }else if(table[i][j] === "P"){
-                player2count++
-            }
-        }
+let player1winCount = 0
+let player2WinCount = 0
+const playCounter = (player) => {
+    
+    if(player === 1){
+        player1winCount++
+    }else if(player === 2){
+        player2WinCount++
     }
+  
     let containerP1 = document.querySelector('#player1count');
     let containerP2 = document.querySelector('#player2count');
     let countPlayer1 = document.createElement('div');
     countPlayer1.classList.add('playCount');
     containerP1.innerHTML = ""
-    countPlayer1.innerHTML = player1 + " : " + player1count;
+    countPlayer1.innerHTML = player1 + " : " + player1winCount;
     let countPlayer2 = document.createElement('div');
     countPlayer2.classList.add('playCount');
     containerP2.innerHTML = ""
-    countPlayer2.innerHTML = player2 + " : " + player2count;
+    countPlayer2.innerHTML = player2 + " : " + player2WinCount;
     containerP1.append(countPlayer1)
     containerP2.append(countPlayer2)
 };
