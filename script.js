@@ -12,12 +12,19 @@ let player1 = 'Player 1'
 let player2 = 'Player 2'
 
 let win
-console.log(win)
 
 let game = document.querySelector("#game");
 let timerContainer = document.getElementById('timerContainer')
+
+const btnQuit = document.getElementById("quit");
+// btnQuit.addEventListener('click', toQuit);
+
 //FUNCAO PARA CRIAR TABALE COM BASE NA ARRAY TABLE   
 const createTable = () => {
+    btnRestart.classList.remove('hidden')
+    btnQuit.classList.remove('hidden')
+    timerContainer.classList.remove('hidden')
+
     document.getElementById('game').innerHTML = '';
     document.getElementById('timerContainer').innerHTML = '';
         for (let i = 0; i < 7; i++) {
@@ -86,7 +93,7 @@ const finalMsg = (player) => {
         message.innerText = 'Go to the next turn!'
         alert.appendChild(message)
         const image = document.createElement('div')
-        image.setAttribute('clas', `${player}-img`)
+        image.setAttribute('class', `${player}-img`)
         alert.appendChild(image)
         game.appendChild(alert)
        
@@ -97,7 +104,7 @@ const finalMsg = (player) => {
         message.innerText = 'Congratulations, You save the princess Zelda!'
         alert.appendChild(message)
         const image = document.createElement('div')
-        image.setAttribute('clas', `${player}-img`)
+        image.setAttribute('class', `${player}-img`)
         alert.appendChild(image)
         game.appendChild(alert)
        
@@ -108,7 +115,7 @@ const finalMsg = (player) => {
         message.innerText = 'Oh no!!! The vilain catch the princess...'
         alert.appendChild(message)
         const image = document.createElement('div')
-        image.setAttribute('clas', `${player}-img`)
+        image.setAttribute('class', `${player}-img`)
         alert.appendChild(image)
         game.appendChild(alert)
      
@@ -340,9 +347,6 @@ const toRestar = () => {
     win = undefined
 }
 
-const btnStart = document.getElementById("start");
-btnStart.addEventListener('click', toStart);
-
 const btnRestart = document.getElementById("restart");
 btnRestart.addEventListener('click', toRestar);
 
@@ -381,6 +385,12 @@ const getNames = () => {
   inputPlayer2.setAttribute('placeholder', 'Player 2')
   inputPlayer2.classList.add('input')
   divInput2.appendChild(inputPlayer2)
+
+  const btnStart = document.createElement('button')
+  btnStart.innerText = 'Start Game'
+  btnStart.classList.add("btnStart");
+  form.appendChild(btnStart)
+  btnStart.addEventListener('click', toStart);
 }
 getNames()
 
