@@ -156,7 +156,6 @@ p {
     width: 9rem;
     height: 2rem;
     background-color: var(--color-six);
-    margin-top: 0.5rem;
 }
 #timer {
     font-family: var(--font-family-two);
@@ -256,6 +255,20 @@ button:hover {
 .img-div {
     width: 4rem;
 }
+#showInfos{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.5
+}
+
+.playCount{
+    margin-left: 4vw;
+    margin-right: 4vw;
+}
+
+
+
 /* <<<< FIM DA ESTILIZAÇAO DA PAGINA >>>> */
 
 
