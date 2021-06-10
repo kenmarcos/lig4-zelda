@@ -119,6 +119,7 @@ const finalMsg = (player) => {
         game.appendChild(alert)
      
     }
+    timerAfterVictory();
 }
 
 // vitória horizontal
@@ -464,3 +465,7 @@ const toQuit = () => {
 }
 
 btnQuit.addEventListener('click', toQuit);
+
+const timerAfterVictory = () => {
+    setTimeout(toRestar, 4000);
+}
