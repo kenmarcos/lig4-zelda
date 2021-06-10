@@ -148,10 +148,14 @@ p {
     font-size: 1.5rem;
 }
 
+.hidden {
+    display: none;
+}
+
 #timerContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
     width: 9rem;
     height: 2rem;
     background-color: var(--color-six);
@@ -159,6 +163,7 @@ p {
 }
 #timer {
     font-family: var(--font-family-two);
+    line-height: 2rem;
 }
 
 button {
@@ -175,10 +180,16 @@ button {
     margin: 0.1rem;
 }
 
+.btnStart {
+    margin-top: 1rem;
+}
+
 button:hover {
     background-color: var(--color-six);
     opacity: 100%;
 }
+
+
 /* <<<< FIM DA ESTILIZAÇAO DA PAGINA >>>> */
 
 
@@ -280,14 +291,15 @@ button:hover {
 
 .form {
     width: 18rem;
-    height: 20rem;
+    height: 21rem;
     background-color: var(--color-five);
     position: absolute;
-    top: 18.3rem;
+    top: 14.5rem;
     z-index: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .div-input {
@@ -308,12 +320,11 @@ button:hover {
     font-size: 2rem;
     color: var(--color-three);
     text-align: center;
-    margin: 0.8rem;
+    margin: 0.8rem 0 0.3rem;
 }
 
 .input {
 	display: block;
-	margin: 0 auto;
     height: 1.3rem;
     width: 8rem;
 	outline: 0;
@@ -369,6 +380,7 @@ button:hover {
         display: flex;
         flex-direction: row;
         align-items: center;
+        flex-wrap: wrap;
     }
     .img1 {
         display: block;
@@ -380,4 +392,11 @@ button:hover {
         margin: 1rem auto;
         width: 5rem;
     }
+
+    .btnStart {
+        width: 100%;
+        margin: 0 5rem;
+        font-size: 2.5rem;
+    }
+
 }
