@@ -149,16 +149,21 @@ p {
     font-size: 1.5rem;
 }
 
+.hidden {
+    display: none;
+}
+
 #timerContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
     width: 9rem;
     height: 2rem;
     background-color: var(--color-six);
 }
 #timer {
     font-family: var(--font-family-two);
+    line-height: 2rem;
 }
 
 button {
@@ -173,6 +178,10 @@ button {
     background-repeat: no-repeat;
     background-position: 94% 50%;
     margin: 0.1rem;
+}
+
+.btnStart {
+    margin-top: 1rem;
 }
 
 button:hover {
@@ -423,6 +432,7 @@ button:hover {
         display: flex;
         flex-direction: row;
         align-items: center;
+        flex-wrap: wrap;
     }
     .img1 {
         display: block;
@@ -434,6 +444,13 @@ button:hover {
         margin: 1rem auto;
         width: 5rem;
     }
+
+    .btnStart {
+        width: 100%;
+        margin: 0 5rem;
+        font-size: 2.5rem;
+    }
+
     .column {
         
         width: 5rem;
