@@ -10,6 +10,10 @@ let table = [
 
 let player1 = 'Player 1'
 let player2 = 'Player 2'
+
+let win
+console.log(win)
+
 let game = document.querySelector("#game");
 let timerContainer = document.getElementById('timerContainer')
 //FUNCAO PARA CRIAR TABALE COM BASE NA ARRAY TABLE   
@@ -127,6 +131,7 @@ const horizontalVictory = (arr) => {
                 if (cell === arr[i][j + 1] && cell === arr[i][j + 2] && cell === arr[i][j + 3]) {
                     finalMsg("alertPlayer1")
                     stopTimer();
+                    win = 'player1'
                     break
                 }
             } else if (cell === 'P') {
@@ -135,6 +140,7 @@ const horizontalVictory = (arr) => {
                     const alert = document.createElement('div')
                     finalMsg("alertPlayer2")
                     stopTimer();
+                    win = 'player2'
                     break
                 }
             }
@@ -157,12 +163,14 @@ const verticalVictroy = (arr) => {
                 if (cell === arr[i + 1][j] && cell === arr[i + 2][j] && cell === arr[i + 3][j]) {
                     finalMsg("alertPlayer1")
                     stopTimer();
+                    win = player1
                 }
             } else if (cell === 'P') {
                 // Checar se as próximas 3 células têm o mesmo valor
                 if (cell === arr[i + 1][j] && cell === arr[i + 2][j] && cell === arr[i + 3][j]) {
                     finalMsg("alertPlayer2")
                     stopTimer();
+                    win = player2
                 }
             }
         }
@@ -177,9 +185,11 @@ const diagonalWin = (player) => {
                 if (player === "V") {
                     finalMsg("alertPlayer1")
                     stopTimer();
+                    win = 'player1'
                 } else {
                     finalMsg("alertPlayer2")
                     stopTimer();
+                    win = 'player2'
                 }
             }
         }
@@ -248,7 +258,12 @@ const changeTurn = (evt) => {
         turn = 'turn2'
         registerPosition(Number(selectedColumn.id), "V");
         diagonalWin("V")
-        player2Turn()
+        horizontalVictory(table)
+        verticalVictroy(table)
+        draw(table)
+        if (win === undefined) {
+            player2Turn()
+        }
     } else { // turno do jogador 2
         // colocar o disco do jogador 2
         const disc2 = document.createElement('div')
@@ -257,12 +272,13 @@ const changeTurn = (evt) => {
         turn = 'turn1'
         registerPosition(Number(selectedColumn.id), "P");
         diagonalWin("P")
-        player1Turn()
+        horizontalVictory(table)
+        verticalVictroy(table)
+        draw(table)
+        if (win === undefined) {
+            player1Turn()
+        }
     } 
-
-    horizontalVictory(table)
-    verticalVictroy(table)
-    draw(table)
 }
 
 function timer() {
@@ -300,6 +316,7 @@ const toStart = () => {
     createTable();
     stopTimer()    
     timer();
+    win = undefined
 }
 
 const toRestar = () => {
@@ -308,6 +325,7 @@ const toRestar = () => {
     createTable();
     stopTimer()
     timer()
+    win = undefined
 }
 
 const btnStart = document.getElementById("start");
