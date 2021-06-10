@@ -359,6 +359,13 @@ button:hover {
 }
 
 
+.alertEmpate .alertEmpate-img {
+    background-image: url(img/link-fight-2.png);
+    background-size: 20rem;
+    background-repeat: no-repeat;
+    background-position: 47% 100%;
+}
+
 .alertPlayer1,
 .alertPlayer2,
 .alertEmpate{
