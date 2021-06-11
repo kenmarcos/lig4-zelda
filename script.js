@@ -136,7 +136,7 @@ const horizontalVictory = (arr) => {
             let cell = arr[i][j];
 
             if (cell === 'V') {
-                // Checar se as próximas 3 células têm o mesmo valor V
+                // Checar se as próximas 3 células à direita têm o mesmo valor V
                 if (cell === arr[i][j + 1] && cell === arr[i][j + 2] && cell === arr[i][j + 3]) {
                     finalMsg("alertPlayer1")
                     stopTimer();
@@ -145,7 +145,7 @@ const horizontalVictory = (arr) => {
                     break
                 }
             } else if (cell === 'P') {
-                // Checar se as próximas 3 células têm o mesmo valor P
+                // Checar se as próximas 3 células à direita têm o mesmo valor P
                 if (cell === arr[i][j + 1] && cell === arr[i][j + 2] && cell === arr[i][j + 3]) {
                     const alert = document.createElement('div')
                     finalMsg("alertPlayer2")
@@ -165,12 +165,12 @@ const verticalVictroy = (arr) => {
 
     for (let i = 0; i < edgeY; i++) {
 
-        // iterar cada célula na linha
+        // iterar em cada célula na linha em questão
         for (let j = 0; j < arr[0].length; j++) {
             cell = arr[i][j];
 
             if (cell === 'V') {
-                // Checar se as próximas 3 células têm o mesmo valor
+                // Checar se as próximas 3 células à baixo têm o mesmo valor
                 if (cell === arr[i + 1][j] && cell === arr[i + 2][j] && cell === arr[i + 3][j]) {
                     finalMsg("alertPlayer1")
                     stopTimer();
@@ -179,7 +179,7 @@ const verticalVictroy = (arr) => {
                     break
                 }
             } else if (cell === 'P') {
-                // Checar se as próximas 3 células têm o mesmo valor
+                // Checar se as próximas 3 células à baixo têm o mesmo valor
                 if (cell === arr[i + 1][j] && cell === arr[i + 2][j] && cell === arr[i + 3][j]) {
                     finalMsg("alertPlayer2")
                     stopTimer();
