@@ -315,18 +315,18 @@ function timer() {
 
 const toStart = () => {
     let inputsNames = document.querySelectorAll('.input')
-    if (inputsNames[0].value === "" && inputsNames[1].value !== "") {
+    if (inputsNames[0].value !== '' && inputsNames[1].value !== '') {
+        player1 = inputsNames[0].value
+        player2 = inputsNames[1].value
+    } else if (inputsNames[0].value !== '' && inputsNames[1].value === '') {
+        player1 = inputsNames[0].value
+        player2 = 'Player 2'
+    } else if (inputsNames[0].value === '' && inputsNames[1].value !== '') {
         player1 = 'Player 1'
         player2 = inputsNames[1].value
-    } else if (inputsNames[0].value !== "" && inputsNames[1].value === "") {
-        player1 = inputsNames[0].value
-        player2 = 'Player 2'
-    } else if (inputsNames[0].value === "" && inputsNames[1].value === "") {
+    } else {
         player1 = 'Player 1'
         player2 = 'Player 2'
-    } else {
-        player1 = inputsNames[0].value
-        player1 = inputsNames[1].value
     }
     turn = 'turn1'
     restartTable();
