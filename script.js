@@ -136,7 +136,7 @@ const horizontalVictory = (arr) => {
             let cell = arr[i][j];
 
             if (cell === 'V') {
-                // Checar se as próximas 3 células têm o mesmo valor V
+                // Checar se as próximas 3 células à direita têm o mesmo valor V
                 if (cell === arr[i][j + 1] && cell === arr[i][j + 2] && cell === arr[i][j + 3]) {
                     finalMsg("alertPlayer1")
                     stopTimer();
@@ -145,7 +145,7 @@ const horizontalVictory = (arr) => {
                     break
                 }
             } else if (cell === 'P') {
-                // Checar se as próximas 3 células têm o mesmo valor P
+                // Checar se as próximas 3 células à direita têm o mesmo valor P
                 if (cell === arr[i][j + 1] && cell === arr[i][j + 2] && cell === arr[i][j + 3]) {
                     const alert = document.createElement('div')
                     finalMsg("alertPlayer2")
@@ -165,12 +165,12 @@ const verticalVictroy = (arr) => {
 
     for (let i = 0; i < edgeY; i++) {
 
-        // iterar cada célula na linha
+        // iterar em cada célula na linha em questão
         for (let j = 0; j < arr[0].length; j++) {
             cell = arr[i][j];
 
             if (cell === 'V') {
-                // Checar se as próximas 3 células têm o mesmo valor
+                // Checar se as próximas 3 células à baixo têm o mesmo valor
                 if (cell === arr[i + 1][j] && cell === arr[i + 2][j] && cell === arr[i + 3][j]) {
                     finalMsg("alertPlayer1")
                     stopTimer();
@@ -179,7 +179,7 @@ const verticalVictroy = (arr) => {
                     break
                 }
             } else if (cell === 'P') {
-                // Checar se as próximas 3 células têm o mesmo valor
+                // Checar se as próximas 3 células à baixo têm o mesmo valor
                 if (cell === arr[i + 1][j] && cell === arr[i + 2][j] && cell === arr[i + 3][j]) {
                     finalMsg("alertPlayer2")
                     stopTimer();
@@ -314,12 +314,18 @@ function timer() {
 
 const toStart = () => {
     let inputsNames = document.querySelectorAll('.input')
-    if (inputsNames[0].value === "" || inputsNames[1].value === "") {
+    if (inputsNames[0].value === "" && inputsNames[1].value !== "") {
+        player1 = 'Player 1'
+        player2 = inputsNames[1].value
+    } else if (inputsNames[0].value !== "" && inputsNames[1].value === "") {
+        player1 = inputsNames[0].value
+        player2 = 'Player 2'
+    } else if (inputsNames[0].value === "" && inputsNames[1].value === "") {
         player1 = 'Player 1'
         player2 = 'Player 2'
     } else {
         player1 = inputsNames[0].value
-        player2 = inputsNames[1].value
+        player1 = inputsNames[1].value
     }
     turn = 'turn1'
     restartTable();
@@ -415,6 +421,8 @@ const player2Turn = () => {
     imgPlayer2.classList.add('img-div')
     divPlayer.appendChild(imgPlayer2)
 }
+let containerP1 = document.querySelector('#player1count');
+let containerP2 = document.querySelector('#player2count');
 
 
 const playCounter = (player) => {
@@ -423,9 +431,8 @@ const playCounter = (player) => {
     } else if (player === 2) {
         player2WinCount++
     }
+  
 
-    let containerP1 = document.querySelector('#player1count');
-    let containerP2 = document.querySelector('#player2count');
     let countPlayer1 = document.createElement('div');
     countPlayer1.classList.add('playCount');
     containerP1.innerHTML = ""
@@ -439,11 +446,32 @@ const playCounter = (player) => {
 };
 
 const toQuit = () => {
-    document.location.reload(true)
+    game.innerHTML = ''
+    divPlayer.classList.remove('div-player1')
+    divPlayer.classList.remove('div-player2')
+    divPlayer.innerHTML = ''
+    containerP1.innerHTML = ''
+    containerP2.innerHTML = ''
+    btnRestart.classList.add('hidden')
+    btnQuit.classList.add('hidden')   
+
+    stopTimer()
+    timerContainer.innerHTML = ''
+
+    const letsGo = document.createElement('p')
+    letsGo.innerText = "Let's Go!"
+    timerContainer.appendChild(letsGo)
+
+    player1winCount = 0
+    player2WinCount = 0
+
+    clearTimeout(time);
+
+    getNames()
 }
 
 const timerAfterVictory = () => {
-    setTimeout(toRestar, 4000);
+    time = setTimeout(toRestar, 4000); 
 }
 
 btnRestart.addEventListener('click', toRestar);
