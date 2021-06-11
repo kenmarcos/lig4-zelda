@@ -10,6 +10,7 @@ let table = [
 let player1
 let player2
 let win
+let time
 let turn = 'turn1'
 let player1winCount = 0
 let player2WinCount = 0
