@@ -39,6 +39,7 @@ const createTable = () => {
 
             }
         }
+
         const timer = document.createElement('div')
         timer.setAttribute('id','timer')
         setTimeout(function() {
@@ -317,11 +318,6 @@ function timer() {
     }, 1000);
 }
 
-// const stopTimer = () => {
-//     clearInterval(timerID);
-// }
-
-
 const toStart = () => {
     let inputsNames = document.querySelectorAll('.input')
     if (inputsNames[0].value === "" || inputsNames[1].value === "") {
@@ -431,6 +427,8 @@ const player2Turn = () => {
   divPlayer.appendChild(imgPlayer2)
 
 }
+let containerP1 = document.querySelector('#player1count');
+let containerP2 = document.querySelector('#player2count');
 
 let player1winCount = 0
 let player2WinCount = 0
@@ -442,8 +440,7 @@ const playCounter = (player) => {
         player2WinCount++
     }
   
-    let containerP1 = document.querySelector('#player1count');
-    let containerP2 = document.querySelector('#player2count');
+
     let countPlayer1 = document.createElement('div');
     countPlayer1.classList.add('playCount');
     containerP1.innerHTML = ""
@@ -457,10 +454,28 @@ const playCounter = (player) => {
 };
 
 const showInfos = document.getElementById('showInfos')
-const buttons = document.getElementsByClassName('buttons')[0]
 
 const toQuit = () => {
-    document.location.reload(true)
+    game.innerHTML = ''
+    divPlayer.classList.remove('div-player1')
+    divPlayer.classList.remove('div-player2')
+    divPlayer.innerHTML = ''
+    containerP1.innerHTML = ''
+    containerP2.innerHTML = ''
+    btnRestart.classList.add('hidden')
+    btnQuit.classList.add('hidden')   
+
+    stopTimer()
+    timerContainer.innerHTML = ''
+
+    const letsGo = document.createElement('p')
+    letsGo.innerText = "Let's Go!"
+    timerContainer.appendChild(letsGo)
+
+    player1winCount = 0
+    player2WinCount = 0
+
+    getNames()
 }
 
 btnQuit.addEventListener('click', toQuit);
