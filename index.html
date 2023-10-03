@@ -1,51 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="/PATH_TO_STATIC_FAVICON/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="/PATH_TO_ANIMATED_FAVICON/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="shortcut icon"
+      href="/PATH_TO_STATIC_FAVICON/favicon.ico"
+      type="image/x-icon"
+    />
+    <link
+      rel="icon"
+      href="/PATH_TO_ANIMATED_FAVICON/favicon.ico"
+      type="image/x-icon"
+    />
 
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./style.css" />
     <title>Lig-4 Zelda</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <audio src="./msc/Zelda Main Theme Song.mp3" autoplay loop></audio>
     <header id="header">
-        <div id="logo">
-            <img src="./img/logo-zelda.png" alt="">
-            <h1>Lig-4</h1>
-        </div>
+      <div id="logo">
+        <img src="./img/logo-zelda.png" alt="" />
+        <h1>Lig-4</h1>
+      </div>
     </header>
 
     <main>
-        <section id="info">
-            <h2>Win the villain and save the princess Zelda!</h2>
-            <div class="buttons">
-                <button id="restart" class="hidden">Reset Game</button>
-                <button id="quit" class="hidden">Quit Game</button>
-            </div>
-            <div id="showInfos">
-                <div id="player1count"></div>
-                <div id="timerContainer" class="hidden">
-                    <p>Let's Go!</p>
-                </div>
-                <div id="player2count"></div>
-            </div>
-        </section>
-        <section id="game"></section>
-        <div id="player"></div>
+      <section id="info">
+        <h2>Win the villain and save the princess Zelda!</h2>
+        <div class="buttons">
+          <button id="restart" class="hidden">Reset Game</button>
+          <button id="quit" class="hidden">Quit Game</button>
+        </div>
+        <div id="showInfos">
+          <div id="player1count"></div>
+          <div id="timerContainer" class="hidden">
+            <p>Let's Go!</p>
+          </div>
+          <div id="player2count"></div>
+        </div>
+      </section>
+      <section id="game"></section>
+      <div id="player"></div>
     </main>
 
     <script src="./script.js"></script>
-</body>
-
+  </body>
 </html>
