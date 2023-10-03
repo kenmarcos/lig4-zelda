@@ -8,7 +8,7 @@
         <a href="#%EF%B8%8F-sobre-o-projeto">Sobre o Projeto</a> •
         <a href="#-layout">Layout</a> •
         <a href="#%EF%B8%8F-tecnologias">Tecnologias</a> •
-        <a href="#-autor">Autor</a>
+        <a href="#-autores">Autores</a>
     </p>
 </div>
 
