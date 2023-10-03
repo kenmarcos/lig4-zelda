@@ -166,7 +166,7 @@ h2 {
 }
 p {
   font-size: var(--font-size-p);
-  color: var(--color-five);
+  /* color: var(--color-five); */
 }
 #header {
   background-color: var(--color-five);
@@ -232,9 +232,9 @@ p {
   background-color: var(--color-two);
   line-height: 1rem;
   margin: 0.5rem;
-  padding: 1.5rem;
+  padding: 1rem;
+  row-gap: 1rem;
 }
-
 .namePlayer1 {
   color: red;
 }
@@ -525,10 +525,6 @@ button:hover {
   }
   .cell {
     height: 4rem;
-  }
-  .playCount {
-    font-size: 1.2rem;
-    line-height: 2rem;
   }
 }
 @media only screen and (min-width: 768px) {

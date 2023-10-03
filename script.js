@@ -354,13 +354,13 @@ const toStart = () => {
     player2 = inputsNames[1].value;
   } else if (inputsNames[0].value !== "" && inputsNames[1].value === "") {
     player1 = inputsNames[0].value;
-    player2 = "Player 2";
+    player2 = "Player2";
   } else if (inputsNames[0].value === "" && inputsNames[1].value !== "") {
-    player1 = "Player 1";
+    player1 = "Player1";
     player2 = inputsNames[1].value;
   } else {
-    player1 = "Player 1";
-    player2 = "Player 2";
+    player1 = "Player1";
+    player2 = "Player2";
   }
   turn = "turn1";
   restartTable();
@@ -393,7 +393,7 @@ const getNames = () => {
   divInput1.appendChild(imgPlayer1);
   const inputPlayer1 = document.createElement("input");
   inputPlayer1.setAttribute("type", "text");
-  inputPlayer1.setAttribute("placeholder", "Player 1");
+  inputPlayer1.setAttribute("placeholder", "Player1");
   inputPlayer1.setAttribute("maxlength", "10");
   inputPlayer1.classList.add("input");
   divInput1.appendChild(inputPlayer1);
@@ -412,7 +412,7 @@ const getNames = () => {
   divInput2.appendChild(imgPlayer2);
   const inputPlayer2 = document.createElement("input");
   inputPlayer2.setAttribute("type", "text");
-  inputPlayer2.setAttribute("placeholder", "Player 2");
+  inputPlayer2.setAttribute("placeholder", "Player2");
   inputPlayer2.setAttribute("maxlength", "10");
   inputPlayer2.classList.add("input");
   divInput2.appendChild(inputPlayer2);
@@ -485,7 +485,7 @@ const playCounter = (player) => {
   namePlayer2.innerText = player2;
   let winsPlayer2 = document.createElement("p");
   countPlayer2.appendChild(winsPlayer2);
-  winsPlayer2.innerText = player1WinCount;
+  winsPlayer2.innerText = player2WinCount;
   containerP2.innerHTML = "";
 
   containerP1.append(countPlayer1);
